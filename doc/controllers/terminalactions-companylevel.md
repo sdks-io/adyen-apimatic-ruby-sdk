@@ -10,11 +10,11 @@ terminalactions_companylevel_api = client.terminalactions_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Terminal Actions](../../doc/controllers/terminalactions-companylevel.md#get-companies-company-id-terminal-actions)
-* [Get-Companies-Company Id-Terminal Actions-Action Id](../../doc/controllers/terminalactions-companylevel.md#get-companies-company-id-terminal-actions-action-id)
+* [List Company Terminal Actions](../../doc/controllers/terminalactions-companylevel.md#list-company-terminal-actions)
+* [Get Company Terminal Action](../../doc/controllers/terminalactions-companylevel.md#get-company-terminal-action)
 
 
-# Get-Companies-Company Id-Terminal Actions
+# List Company Terminal Actions
 
 Returns the [terminal actions](https://docs.adyen.com/point-of-sale/automating-terminal-management/terminal-actions-api) that have been scheduled for the company identified in the path.The response doesn't include actions that are scheduled by Adyen.
 To make this request, your API credential must have one of the following [roles](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
@@ -25,11 +25,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_actions(company_id,
-                                              page_number: nil,
-                                              page_size: nil,
-                                              status: nil,
-                                              type: nil)
+def list_company_terminal_actions(company_id,
+                                  page_number: nil,
+                                  page_size: nil,
+                                  status: nil,
+                                  type: nil)
 ```
 
 ## Parameters
@@ -55,7 +55,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_actions_company_level_api.get_companies_company_id_terminal_actions(company_id)
+result = terminal_actions_company_level_api.list_company_terminal_actions(company_id)
 
 if result.success?
   puts result.data
@@ -94,7 +94,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Actions-Action Id
+# Get Company Terminal Action
 
 Returns the details of the [terminal action](https://docs.adyen.com/point-of-sale/automating-terminal-management/terminal-actions-api) identified in the path.
 To make this request, your API credential must have one of the following [roles](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
@@ -105,8 +105,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_actions_action_id(company_id,
-                                                        action_id)
+def get_company_terminal_action(company_id,
+                                action_id)
 ```
 
 ## Parameters
@@ -131,7 +131,7 @@ company_id = 'companyId0'
 
 action_id = 'actionId0'
 
-result = terminal_actions_company_level_api.get_companies_company_id_terminal_actions_action_id(
+result = terminal_actions_company_level_api.get_company_terminal_action(
   company_id,
   action_id
 )

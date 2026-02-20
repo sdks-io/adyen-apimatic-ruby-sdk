@@ -10,15 +10,15 @@ androidfiles_companylevel_api = client.androidfiles_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Android Apps](../../doc/controllers/androidfiles-companylevel.md#get-companies-company-id-android-apps)
-* [Post-Companies-Company Id-Android Apps](../../doc/controllers/androidfiles-companylevel.md#post-companies-company-id-android-apps)
-* [Get-Companies-Company Id-Android Apps-Id](../../doc/controllers/androidfiles-companylevel.md#get-companies-company-id-android-apps-id)
-* [Patch-Companies-Company Id-Android Apps-Id](../../doc/controllers/androidfiles-companylevel.md#patch-companies-company-id-android-apps-id)
-* [Get-Companies-Company Id-Android Certificates](../../doc/controllers/androidfiles-companylevel.md#get-companies-company-id-android-certificates)
-* [Post-Companies-Company Id-Android Certificates](../../doc/controllers/androidfiles-companylevel.md#post-companies-company-id-android-certificates)
+* [List Android Apps](../../doc/controllers/androidfiles-companylevel.md#list-android-apps)
+* [Create Android App](../../doc/controllers/androidfiles-companylevel.md#create-android-app)
+* [Get Android App](../../doc/controllers/androidfiles-companylevel.md#get-android-app)
+* [Update Android App](../../doc/controllers/androidfiles-companylevel.md#update-android-app)
+* [List Android Certificates](../../doc/controllers/androidfiles-companylevel.md#list-android-certificates)
+* [Upload Android Certificate](../../doc/controllers/androidfiles-companylevel.md#upload-android-certificate)
 
 
-# Get-Companies-Company Id-Android Apps
+# List Android Apps
 
 Returns a list of the Android apps that are available for the company identified in the path.
 These apps have been uploaded to Adyen and can be installed or uninstalled on Android payment terminals through [terminal actions](https://docs.adyen.com/point-of-sale/automating-terminal-management/terminal-actions-api).
@@ -33,11 +33,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_android_apps(company_id,
-                                          page_number: nil,
-                                          page_size: nil,
-                                          package_name: nil,
-                                          version_code: nil)
+def list_android_apps(company_id,
+                      page_number: nil,
+                      page_size: nil,
+                      package_name: nil,
+                      version_code: nil)
 ```
 
 ## Parameters
@@ -63,7 +63,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = android_files_company_level_api.get_companies_company_id_android_apps(company_id)
+result = android_files_company_level_api.list_android_apps(company_id)
 
 if result.success?
   puts result.data
@@ -110,7 +110,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Android Apps
+# Create Android App
 
 Uploads an Android APK file to Adyen.
 The maximum APK file size is 200 MB.
@@ -123,7 +123,7 @@ In the live environment, requests to this endpoint are subject to [rate limits](
 > By choosing to upload, install, or run any third-party applications on an Adyen payment terminal, you accept full responsibility and liability for any consequences of uploading, installing, or running any such applications.
 
 ```ruby
-def post_companies_company_id_android_apps(company_id)
+def create_android_app(company_id)
 ```
 
 ## Parameters
@@ -145,7 +145,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = android_files_company_level_api.post_companies_company_id_android_apps(company_id)
+result = android_files_company_level_api.create_android_app(company_id)
 
 if result.success?
   puts result.data
@@ -165,7 +165,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Android Apps-Id
+# Get Android App
 
 Returns the details of the Android app identified in the path.
 These apps have been uploaded to Adyen and can be installed or uninstalled on Android payment terminals through [terminal actions](https://docs.adyen.com/point-of-sale/automating-terminal-management/terminal-actions-api).
@@ -178,8 +178,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_android_apps_id(company_id,
-                                             id)
+def get_android_app(company_id,
+                    id)
 ```
 
 ## Parameters
@@ -204,7 +204,7 @@ company_id = 'companyId0'
 
 id = 'id0'
 
-result = android_files_company_level_api.get_companies_company_id_android_apps_id(
+result = android_files_company_level_api.get_android_app(
   company_id,
   id
 )
@@ -227,7 +227,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Android Apps-Id
+# Update Android App
 
 Reuploads the Android app identified in the path.
 To make this request, your API credential must have this [role](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
@@ -239,8 +239,8 @@ In the live environment, requests to this endpoint are subject to [rate limits](
 > By choosing to upload, install, or run any third-party applications on an Adyen payment terminal, you accept full responsibility and liability for any consequences of uploading, installing, or running any such applications.
 
 ```ruby
-def patch_companies_company_id_android_apps_id(company_id,
-                                               id)
+def update_android_app(company_id,
+                       id)
 ```
 
 ## Parameters
@@ -265,7 +265,7 @@ company_id = 'companyId0'
 
 id = 'id0'
 
-result = android_files_company_level_api.patch_companies_company_id_android_apps_id(
+result = android_files_company_level_api.update_android_app(
   company_id,
   id
 )
@@ -288,7 +288,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Android Certificates
+# List Android Certificates
 
 Returns a list of the Android certificates that are available for the company identified in the path.
 Typically, these certificates enable running apps on Android payment terminals. The certificates in the list have been uploaded to Adyen and can be installed or uninstalled on Android terminals through [terminal actions](https://docs.adyen.com/point-of-sale/automating-terminal-management/terminal-actions-api).
@@ -303,10 +303,10 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_android_certificates(company_id,
-                                                  page_number: nil,
-                                                  page_size: nil,
-                                                  certificate_name: nil)
+def list_android_certificates(company_id,
+                              page_number: nil,
+                              page_size: nil,
+                              certificate_name: nil)
 ```
 
 ## Parameters
@@ -331,7 +331,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = android_files_company_level_api.get_companies_company_id_android_certificates(company_id)
+result = android_files_company_level_api.list_android_certificates(company_id)
 
 if result.success?
   puts result.data
@@ -378,14 +378,14 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Android Certificates
+# Upload Android Certificate
 
 Uploads an Android Certificate file to Adyen.
 
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_companies_company_id_android_certificates(company_id)
+def upload_android_certificate(company_id)
 ```
 
 ## Parameters
@@ -407,7 +407,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = android_files_company_level_api.post_companies_company_id_android_certificates(company_id)
+result = android_files_company_level_api.upload_android_certificate(company_id)
 
 if result.success?
   puts result.data

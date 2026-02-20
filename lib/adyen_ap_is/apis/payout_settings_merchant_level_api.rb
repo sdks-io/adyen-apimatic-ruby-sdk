@@ -17,7 +17,7 @@ module AdyenApIs
     # @param [String] merchant_id Required parameter: The unique identifier of
     # the merchant account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_payout_settings(merchant_id)
+    def list_payout_settings(merchant_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/payoutSettings',
@@ -69,8 +69,8 @@ module AdyenApIs
     # @param [PayoutSettingsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_payout_settings(merchant_id,
-                                                   body: nil)
+    def create_payout_setting(merchant_id,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/payoutSettings',
@@ -118,8 +118,8 @@ module AdyenApIs
     # @param [String] payout_settings_id Required parameter: The unique
     # identifier of the payout setting.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                        payout_settings_id)
+    def delete_payout_setting(merchant_id,
+                              payout_settings_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/merchants/{merchantId}/payoutSettings/{payoutSettingsId}',
@@ -165,8 +165,8 @@ module AdyenApIs
     # @param [String] payout_settings_id Required parameter: The unique
     # identifier of the payout setting.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                     payout_settings_id)
+    def get_payout_setting(merchant_id,
+                           payout_settings_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/payoutSettings/{payoutSettingsId}',
@@ -217,9 +217,9 @@ module AdyenApIs
     # @param [UpdatePayoutSettingsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                       payout_settings_id,
-                                                                       body: nil)
+    def update_payout_setting(merchant_id,
+                              payout_settings_id,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/payoutSettings/{payoutSettingsId}',

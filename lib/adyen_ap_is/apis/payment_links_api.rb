@@ -18,8 +18,8 @@ module AdyenApIs
     # @param [PaymentLinkRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payment_links(idempotency_key: nil,
-                           body: nil)
+    def create_payment_link(idempotency_key: nil,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/paymentLinks',
@@ -57,7 +57,7 @@ module AdyenApIs
     # @param [String] link_id Required parameter: Unique identifier of the
     # payment link.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_payment_links_link_id(link_id)
+    def get_payment_link(link_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/paymentLinks/{linkId}',
@@ -99,8 +99,8 @@ module AdyenApIs
     # @param [UpdatePaymentLinkRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_payment_links_link_id(link_id,
-                                    body: nil)
+    def update_payment_link(link_id,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/paymentLinks/{linkId}',

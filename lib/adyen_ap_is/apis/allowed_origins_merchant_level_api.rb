@@ -18,8 +18,8 @@ module AdyenApIs
     # @param [String] api_credential_id Required parameter: Unique identifier of
     # the API credential.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_api_credentials_api_credential_id_allowed_origins(merchant_id,
-                                                                                    api_credential_id)
+    def list_merchant_api_credential_origins(merchant_id,
+                                             api_credential_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/apiCredentials/{apiCredentialId}/allowedOrigins',
@@ -69,9 +69,9 @@ module AdyenApIs
     # @param [AllowedOrigin] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_api_credentials_api_credential_id_allowed_origins(merchant_id,
-                                                                                     api_credential_id,
-                                                                                     body: nil)
+    def create_merchant_api_credential_origin(merchant_id,
+                                              api_credential_id,
+                                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/apiCredentials/{apiCredentialId}/allowedOrigins',
@@ -126,9 +126,9 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_merchants_merchant_id_api_credentials_api_credential_id_allowed_origins_origin_id(merchant_id,
-                                                                                                 api_credential_id,
-                                                                                                 origin_id)
+    def delete_merchant_api_credential_origin(merchant_id,
+                                              api_credential_id,
+                                              origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/merchants/{merchantId}/apiCredentials/{apiCredentialId}/allowedOrigins/{originId}',
@@ -179,9 +179,9 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_api_credentials_api_credential_id_allowed_origins_origin_id(merchant_id,
-                                                                                              api_credential_id,
-                                                                                              origin_id)
+    def get_merchant_api_credential_origin(merchant_id,
+                                           api_credential_id,
+                                           origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/apiCredentials/{apiCredentialId}/allowedOrigins/{originId}',

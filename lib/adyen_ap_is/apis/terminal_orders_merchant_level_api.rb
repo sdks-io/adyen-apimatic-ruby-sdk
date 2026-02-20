@@ -22,8 +22,8 @@ module AdyenApIs
     # the merchant account.
     # @param [String] name Optional parameter: The name of the billing entity.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_billing_entities(merchant_id,
-                                                   name: nil)
+    def list_merchant_billing_entities(merchant_id,
+                                       name: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/billingEntities',
@@ -78,10 +78,10 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of locations to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_shipping_locations(merchant_id,
-                                                     name: nil,
-                                                     offset: nil,
-                                                     limit: nil)
+    def list_merchant_shipping_locations(merchant_id,
+                                         name: nil,
+                                         offset: nil,
+                                         limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/shippingLocations',
@@ -132,8 +132,8 @@ module AdyenApIs
     # @param [ShippingLocation] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_shipping_locations(merchant_id,
-                                                      body: nil)
+    def create_merchant_shipping_location(merchant_id,
+                                          body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/shippingLocations',
@@ -184,7 +184,7 @@ module AdyenApIs
     # @param [String] merchant_id Required parameter: The unique identifier of
     # the merchant account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_terminal_models(merchant_id)
+    def list_merchant_terminal_models(merchant_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/terminalModels',
@@ -239,11 +239,11 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of orders to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_terminal_orders(merchant_id,
-                                                  customer_order_reference: nil,
-                                                  status: nil,
-                                                  offset: nil,
-                                                  limit: nil)
+    def list_merchant_terminal_orders(merchant_id,
+                                      customer_order_reference: nil,
+                                      status: nil,
+                                      offset: nil,
+                                      limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/terminalOrders',
@@ -298,8 +298,8 @@ module AdyenApIs
     # @param [TerminalOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_terminal_orders(merchant_id,
-                                                   body: nil)
+    def create_merchant_terminal_order(merchant_id,
+                                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/terminalOrders',
@@ -349,8 +349,8 @@ module AdyenApIs
     # @param [String] order_id Required parameter: The unique identifier of the
     # order.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_terminal_orders_order_id(merchant_id,
-                                                           order_id)
+    def get_merchant_terminal_order(merchant_id,
+                                    order_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/terminalOrders/{orderId}',
@@ -407,9 +407,9 @@ module AdyenApIs
     # @param [TerminalOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_terminal_orders_order_id(merchant_id,
-                                                             order_id,
-                                                             body: nil)
+    def update_merchant_terminal_order(merchant_id,
+                                       order_id,
+                                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/terminalOrders/{orderId}',
@@ -465,8 +465,8 @@ module AdyenApIs
     # @param [String] order_id Required parameter: The unique identifier of the
     # order.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_terminal_orders_order_id_cancel(merchant_id,
-                                                                   order_id)
+    def cancel_merchant_terminal_order(merchant_id,
+                                       order_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/terminalOrders/{orderId}/cancel',
@@ -528,11 +528,11 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of products to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_terminal_products(merchant_id,
-                                                    country,
-                                                    terminal_model_id: nil,
-                                                    offset: nil,
-                                                    limit: nil)
+    def list_merchant_terminal_products(merchant_id,
+                                        country,
+                                        terminal_model_id: nil,
+                                        offset: nil,
+                                        limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/terminalProducts',

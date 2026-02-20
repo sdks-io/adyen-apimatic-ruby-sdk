@@ -14,8 +14,8 @@ module AdyenApIs
     # @param [CreateOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_orders(idempotency_key: nil,
-                    body: nil)
+    def create_order(idempotency_key: nil,
+                     body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/orders',
@@ -57,8 +57,8 @@ module AdyenApIs
     # @param [CancelOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_orders_cancel(idempotency_key: nil,
-                           body: nil)
+    def cancel_order(idempotency_key: nil,
+                     body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/orders/cancel',
@@ -100,8 +100,8 @@ module AdyenApIs
     # @param [BalanceCheckRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payment_methods_balance(idempotency_key: nil,
-                                     body: nil)
+    def get_payment_method_balance(idempotency_key: nil,
+                                   body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/paymentMethods/balance',

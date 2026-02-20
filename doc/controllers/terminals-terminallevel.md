@@ -10,11 +10,11 @@ terminals_terminallevel_api = client.terminals_terminallevel
 
 ## Methods
 
-* [Get-Terminals](../../doc/controllers/terminals-terminallevel.md#get-terminals)
-* [Post-Terminals-Terminal Id-Reassign](../../doc/controllers/terminals-terminallevel.md#post-terminals-terminal-id-reassign)
+* [List Terminals](../../doc/controllers/terminals-terminallevel.md#list-terminals)
+* [Reassign Terminal](../../doc/controllers/terminals-terminallevel.md#reassign-terminal)
 
 
-# Get-Terminals
+# List Terminals
 
 Returns the payment terminals that the API credential has access to and that match the query parameters.
 To make this request, your API credential must have the following [roles](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
@@ -24,14 +24,14 @@ To make this request, your API credential must have the following [roles](https:
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_terminals(search_query: nil,
-                  otp_query: nil,
-                  countries: nil,
-                  merchant_ids: nil,
-                  store_ids: nil,
-                  brand_models: nil,
-                  page_number: nil,
-                  page_size: nil)
+def list_terminals(search_query: nil,
+                   otp_query: nil,
+                   countries: nil,
+                   merchant_ids: nil,
+                   store_ids: nil,
+                   brand_models: nil,
+                   page_number: nil,
+                   page_size: nil)
 ```
 
 ## Parameters
@@ -58,7 +58,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ## Example Usage
 
 ```ruby
-result = terminals_terminal_level_api.get_terminals
+result = terminals_terminal_level_api.list_terminals
 
 if result.success?
   puts result.data
@@ -127,7 +127,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Terminals-Terminal Id-Reassign
+# Reassign Terminal
 
 Reassigns a payment terminal to a company account, merchant account, merchant account inventory, or a store.
 
@@ -138,8 +138,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_terminals_terminal_id_reassign(terminal_id,
-                                        body: nil)
+def reassign_terminal(terminal_id,
+                      body: nil)
 ```
 
 ## Parameters
@@ -167,7 +167,7 @@ body = TerminalReassignmentRequest.new(
   merchant_id: 'YOUR_MERCHANT_ID'
 )
 
-result = terminals_terminal_level_api.post_terminals_terminal_id_reassign(
+result = terminals_terminal_level_api.reassign_terminal(
   terminal_id,
   body: body
 )

@@ -10,19 +10,19 @@ terminalorders_companylevel_api = client.terminalorders_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Billing Entities](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-billing-entities)
-* [Get-Companies-Company Id-Shipping Locations](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-shipping-locations)
-* [Post-Companies-Company Id-Shipping Locations](../../doc/controllers/terminalorders-companylevel.md#post-companies-company-id-shipping-locations)
-* [Get-Companies-Company Id-Terminal Models](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-terminal-models)
-* [Get-Companies-Company Id-Terminal Orders](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-terminal-orders)
-* [Post-Companies-Company Id-Terminal Orders](../../doc/controllers/terminalorders-companylevel.md#post-companies-company-id-terminal-orders)
-* [Get-Companies-Company Id-Terminal Orders-Order Id](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-terminal-orders-order-id)
-* [Patch-Companies-Company Id-Terminal Orders-Order Id](../../doc/controllers/terminalorders-companylevel.md#patch-companies-company-id-terminal-orders-order-id)
-* [Post-Companies-Company Id-Terminal Orders-Order Id-Cancel](../../doc/controllers/terminalorders-companylevel.md#post-companies-company-id-terminal-orders-order-id-cancel)
-* [Get-Companies-Company Id-Terminal Products](../../doc/controllers/terminalorders-companylevel.md#get-companies-company-id-terminal-products)
+* [List Company Billing Entities](../../doc/controllers/terminalorders-companylevel.md#list-company-billing-entities)
+* [List Company Shipping Locations](../../doc/controllers/terminalorders-companylevel.md#list-company-shipping-locations)
+* [Create Company Shipping Location](../../doc/controllers/terminalorders-companylevel.md#create-company-shipping-location)
+* [List Company Terminal Models](../../doc/controllers/terminalorders-companylevel.md#list-company-terminal-models)
+* [List Company Terminal Orders](../../doc/controllers/terminalorders-companylevel.md#list-company-terminal-orders)
+* [Create Company Terminal Order](../../doc/controllers/terminalorders-companylevel.md#create-company-terminal-order)
+* [Get Company Terminal Order](../../doc/controllers/terminalorders-companylevel.md#get-company-terminal-order)
+* [Update Company Terminal Order](../../doc/controllers/terminalorders-companylevel.md#update-company-terminal-order)
+* [Cancel Company Terminal Order](../../doc/controllers/terminalorders-companylevel.md#cancel-company-terminal-order)
+* [List Company Terminal Products](../../doc/controllers/terminalorders-companylevel.md#list-company-terminal-products)
 
 
-# Get-Companies-Company Id-Billing Entities
+# List Company Billing Entities
 
 Returns the billing entities of the company identified in the path and all merchant accounts belonging to the company.
 A billing entity is a legal entity where we charge orders to. An order for terminal products must contain the ID of a billing entity.
@@ -35,8 +35,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_billing_entities(company_id,
-                                              name: nil)
+def list_company_billing_entities(company_id,
+                                  name: nil)
 ```
 
 ## Parameters
@@ -59,7 +59,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_orders_company_level_api.get_companies_company_id_billing_entities(company_id)
+result = terminal_orders_company_level_api.list_company_billing_entities(company_id)
 
 if result.success?
   puts result.data
@@ -112,7 +112,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Shipping Locations
+# List Company Shipping Locations
 
 Returns the shipping locations for the company identified in the path and all merchant accounts belonging to the company.
 A shipping location includes the address where orders can be delivered, and an ID which you need to specify when ordering terminal products.
@@ -125,10 +125,10 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_shipping_locations(company_id,
-                                                name: nil,
-                                                offset: nil,
-                                                limit: nil)
+def list_company_shipping_locations(company_id,
+                                    name: nil,
+                                    offset: nil,
+                                    limit: nil)
 ```
 
 ## Parameters
@@ -153,7 +153,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_orders_company_level_api.get_companies_company_id_shipping_locations(company_id)
+result = terminal_orders_company_level_api.list_company_shipping_locations(company_id)
 
 if result.success?
   puts result.data
@@ -215,7 +215,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Shipping Locations
+# Create Company Shipping Location
 
 Creates a shipping location for the company identified in the path. A shipping location defines an address where orders can be delivered.
 
@@ -226,8 +226,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_companies_company_id_shipping_locations(company_id,
-                                                 body: nil)
+def create_company_shipping_location(company_id,
+                                     body: nil)
 ```
 
 ## Parameters
@@ -268,7 +268,7 @@ body = ShippingLocation.new(
   name: 'YOUR_COMPANY Rokin depot'
 )
 
-result = terminal_orders_company_level_api.post_companies_company_id_shipping_locations(
+result = terminal_orders_company_level_api.create_company_shipping_location(
   company_id,
   body: body
 )
@@ -313,7 +313,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Models
+# List Company Terminal Models
 
 Returns a list of payment terminal models that the company identified in the path has access to.
 The response includes the terminal model ID, which can be used as a query parameter when getting a list of terminals or a list of products for ordering.
@@ -326,7 +326,7 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_models(company_id)
+def list_company_terminal_models(company_id)
 ```
 
 ## Parameters
@@ -348,7 +348,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_orders_company_level_api.get_companies_company_id_terminal_models(company_id)
+result = terminal_orders_company_level_api.list_company_terminal_models(company_id)
 
 if result.success?
   puts result.data
@@ -529,7 +529,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Orders
+# List Company Terminal Orders
 
 Returns a lists of terminal products orders for the company identified in the path.
 To filter the list, use one or more of the query parameters.
@@ -542,11 +542,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_orders(company_id,
-                                             customer_order_reference: nil,
-                                             status: nil,
-                                             offset: nil,
-                                             limit: nil)
+def list_company_terminal_orders(company_id,
+                                 customer_order_reference: nil,
+                                 status: nil,
+                                 offset: nil,
+                                 limit: nil)
 ```
 
 ## Parameters
@@ -572,7 +572,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_orders_company_level_api.get_companies_company_id_terminal_orders(company_id)
+result = terminal_orders_company_level_api.list_company_terminal_orders(company_id)
 
 if result.success?
   puts result.data
@@ -683,7 +683,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Terminal Orders
+# Create Company Terminal Order
 
 Creates an order for payment terminal products for the company identified in the path.
 
@@ -696,8 +696,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_companies_company_id_terminal_orders(company_id,
-                                              body: nil)
+def create_company_terminal_order(company_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -738,7 +738,7 @@ body = TerminalOrderRequest.new(
   shipping_location_id: 'S2-6A6C2E3432747D4F2F2C3455485E3836457D'
 )
 
-result = terminal_orders_company_level_api.post_companies_company_id_terminal_orders(
+result = terminal_orders_company_level_api.create_company_terminal_order(
   company_id,
   body: body
 )
@@ -812,7 +812,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Orders-Order Id
+# Get Company Terminal Order
 
 Returns the details of the terminal products order identified in the path.
 
@@ -824,8 +824,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_orders_order_id(company_id,
-                                                      order_id)
+def get_company_terminal_order(company_id,
+                               order_id)
 ```
 
 ## Parameters
@@ -850,7 +850,7 @@ company_id = 'companyId0'
 
 order_id = 'orderId2'
 
-result = terminal_orders_company_level_api.get_companies_company_id_terminal_orders_order_id(
+result = terminal_orders_company_level_api.get_company_terminal_order(
   company_id,
   order_id
 )
@@ -924,7 +924,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Terminal Orders-Order Id
+# Update Company Terminal Order
 
 Updates the terminal products order identified in the path.
 Updating is only possible while the order has the status **Placed**.
@@ -940,9 +940,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_companies_company_id_terminal_orders_order_id(company_id,
-                                                        order_id,
-                                                        body: nil)
+def update_company_terminal_order(company_id,
+                                  order_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -988,7 +988,7 @@ body = TerminalOrderRequest.new(
   ]
 )
 
-result = terminal_orders_company_level_api.patch_companies_company_id_terminal_orders_order_id(
+result = terminal_orders_company_level_api.update_company_terminal_order(
   company_id,
   order_id,
   body: body
@@ -1070,7 +1070,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Terminal Orders-Order Id-Cancel
+# Cancel Company Terminal Order
 
 Cancels the terminal products order identified in the path.
 Cancelling is only possible while the order has the status **Placed**.
@@ -1083,8 +1083,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_companies_company_id_terminal_orders_order_id_cancel(company_id,
-                                                              order_id)
+def cancel_company_terminal_order(company_id,
+                                  order_id)
 ```
 
 ## Parameters
@@ -1109,7 +1109,7 @@ company_id = 'companyId0'
 
 order_id = 'orderId2'
 
-result = terminal_orders_company_level_api.post_companies_company_id_terminal_orders_order_id_cancel(
+result = terminal_orders_company_level_api.cancel_company_terminal_order(
   company_id,
   order_id
 )
@@ -1183,7 +1183,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Products
+# List Company Terminal Products
 
 Returns a country-specific list of payment terminal packages and parts that the company identified in the path has access to.
 
@@ -1195,11 +1195,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_products(company_id,
-                                               country,
-                                               terminal_model_id: nil,
-                                               offset: nil,
-                                               limit: nil)
+def list_company_terminal_products(company_id,
+                                   country,
+                                   terminal_model_id: nil,
+                                   offset: nil,
+                                   limit: nil)
 ```
 
 ## Parameters
@@ -1227,7 +1227,7 @@ company_id = 'companyId0'
 
 country = 'country4'
 
-result = terminal_orders_company_level_api.get_companies_company_id_terminal_products(
+result = terminal_orders_company_level_api.list_company_terminal_products(
   company_id,
   country
 )

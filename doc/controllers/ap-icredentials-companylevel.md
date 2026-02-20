@@ -10,13 +10,13 @@ ap_icredentials_companylevel_api = client.ap_icredentials_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Api Credentials](../../doc/controllers/ap-icredentials-companylevel.md#get-companies-company-id-api-credentials)
-* [Post-Companies-Company Id-Api Credentials](../../doc/controllers/ap-icredentials-companylevel.md#post-companies-company-id-api-credentials)
-* [Get-Companies-Company Id-Api Credentials-Api Credential Id](../../doc/controllers/ap-icredentials-companylevel.md#get-companies-company-id-api-credentials-api-credential-id)
-* [Patch-Companies-Company Id-Api Credentials-Api Credential Id](../../doc/controllers/ap-icredentials-companylevel.md#patch-companies-company-id-api-credentials-api-credential-id)
+* [List Company Api Credentials](../../doc/controllers/ap-icredentials-companylevel.md#list-company-api-credentials)
+* [Create Company Api Credential](../../doc/controllers/ap-icredentials-companylevel.md#create-company-api-credential)
+* [Get Company Api Credential](../../doc/controllers/ap-icredentials-companylevel.md#get-company-api-credential)
+* [Update Company Api Credential](../../doc/controllers/ap-icredentials-companylevel.md#update-company-api-credential)
 
 
-# Get-Companies-Company Id-Api Credentials
+# List Company Api Credentials
 
 Returns the list of [API credentials](https://docs.adyen.com/development-resources/api-credentials) for the company account. The list is grouped into pages as defined by the query parameters.
 
@@ -25,9 +25,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def get_companies_company_id_api_credentials(company_id,
-                                             page_number: nil,
-                                             page_size: nil)
+def list_company_api_credentials(company_id,
+                                 page_number: nil,
+                                 page_size: nil)
 ```
 
 ## Parameters
@@ -51,7 +51,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = api_credentials_company_level_api.get_companies_company_id_api_credentials(company_id)
+result = api_credentials_company_level_api.list_company_api_credentials(company_id)
 
 if result.success?
   puts result.data
@@ -419,7 +419,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Api Credentials
+# Create Company Api Credential
 
 Creates an [API credential](https://docs.adyen.com/development-resources/api-credentials) for the company account identified in the path. In the request, you can specify which merchant accounts the new API credential will have access to, as well as its roles and allowed origins.
 
@@ -438,8 +438,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def post_companies_company_id_api_credentials(company_id,
-                                              body: nil)
+def create_company_api_credential(company_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -476,7 +476,7 @@ body = CreateCompanyApiCredentialRequest.new(
   ]
 )
 
-result = api_credentials_company_level_api.post_companies_company_id_api_credentials(
+result = api_credentials_company_level_api.create_company_api_credential(
   company_id,
   body: body
 )
@@ -549,7 +549,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Api Credentials-Api Credential Id
+# Get Company Api Credential
 
 Returns the [API credential](https://docs.adyen.com/development-resources/api-credentials) identified in the path.
 
@@ -558,8 +558,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def get_companies_company_id_api_credentials_api_credential_id(company_id,
-                                                               api_credential_id)
+def get_company_api_credential(company_id,
+                               api_credential_id)
 ```
 
 ## Parameters
@@ -584,7 +584,7 @@ company_id = 'companyId0'
 
 api_credential_id = 'apiCredentialId8'
 
-result = api_credentials_company_level_api.get_companies_company_id_api_credentials_api_credential_id(
+result = api_credentials_company_level_api.get_company_api_credential(
   company_id,
   api_credential_id
 )
@@ -662,7 +662,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Api Credentials-Api Credential Id
+# Update Company Api Credential
 
 Changes the API credential's roles, merchant account access, or allowed origins. The request has the new values for the fields you want to change. The response contains the full updated API credential, including the new values from the request.
 
@@ -671,9 +671,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def patch_companies_company_id_api_credentials_api_credential_id(company_id,
-                                                                 api_credential_id,
-                                                                 body: nil)
+def update_company_api_credential(company_id,
+                                  api_credential_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -703,7 +703,7 @@ body = UpdateCompanyApiCredentialRequest.new(
   active: true
 )
 
-result = api_credentials_company_level_api.patch_companies_company_id_api_credentials_api_credential_id(
+result = api_credentials_company_level_api.update_company_api_credential(
   company_id,
   api_credential_id,
   body: body

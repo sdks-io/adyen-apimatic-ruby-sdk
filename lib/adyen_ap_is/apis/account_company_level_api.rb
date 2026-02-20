@@ -17,8 +17,8 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies(page_number: nil,
-                      page_size: nil)
+    def list_companies(page_number: nil,
+                       page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies',
@@ -59,7 +59,7 @@ module AdyenApIs
     # @param [String] company_id Required parameter: The unique identifier of
     # the company account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id(company_id)
+    def get_company(company_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}',
@@ -107,9 +107,9 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_merchants(company_id,
-                                           page_number: nil,
-                                           page_size: nil)
+    def list_company_merchants(company_id,
+                               page_number: nil,
+                               page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/merchants',

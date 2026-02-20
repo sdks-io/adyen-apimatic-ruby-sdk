@@ -23,11 +23,11 @@ module AdyenApIs
     # @param [Integer] page_number Optional parameter: The number of the page to
     # fetch.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_payment_method_settings(merchant_id,
-                                                          store_id: nil,
-                                                          business_line_id: nil,
-                                                          page_size: nil,
-                                                          page_number: nil)
+    def list_payment_method_settings(merchant_id,
+                                     store_id: nil,
+                                     business_line_id: nil,
+                                     page_size: nil,
+                                     page_number: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/paymentMethodSettings',
@@ -82,8 +82,8 @@ module AdyenApIs
     # @param [PaymentMethodSetupInfo] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_payment_method_settings(merchant_id,
-                                                           body: nil)
+    def create_payment_method_setting(merchant_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/paymentMethodSettings',
@@ -133,8 +133,8 @@ module AdyenApIs
     # @param [String] payment_method_id Required parameter: The unique
     # identifier of the payment method.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_payment_method_settings_payment_method_id(merchant_id,
-                                                                            payment_method_id)
+    def get_payment_method_setting(merchant_id,
+                                   payment_method_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/paymentMethodSettings/{paymentMethodId}',
@@ -190,9 +190,9 @@ module AdyenApIs
     # @param [UpdatePaymentMethodInfo] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_payment_method_settings_payment_method_id(merchant_id,
-                                                                              payment_method_id,
-                                                                              body: nil)
+    def update_payment_method_setting(merchant_id,
+                                      payment_method_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/paymentMethodSettings/{paymentMethodId}',
@@ -250,9 +250,9 @@ module AdyenApIs
     # @param [ApplePayInfo] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_payment_method_settings_payment_method_id_add_apple_pay_domains(merchant_id,
-                                                                                                   payment_method_id,
-                                                                                                   body: nil)
+    def add_apple_pay_domains(merchant_id,
+                              payment_method_id,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/paymentMethodSettings/{paymentMethodId}/addApplePayDomains',
@@ -306,8 +306,8 @@ module AdyenApIs
     # @param [String] payment_method_id Required parameter: The unique
     # identifier of the payment method.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_payment_method_settings_payment_method_id_get_apple_pay_domains(merchant_id,
-                                                                                                  payment_method_id)
+    def get_apple_pay_domains(merchant_id,
+                              payment_method_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/paymentMethodSettings/{paymentMethodId}/getApplePayDomains',

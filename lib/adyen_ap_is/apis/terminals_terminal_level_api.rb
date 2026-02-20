@@ -40,14 +40,14 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 20 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_terminals(search_query: nil,
-                      otp_query: nil,
-                      countries: nil,
-                      merchant_ids: nil,
-                      store_ids: nil,
-                      brand_models: nil,
-                      page_number: nil,
-                      page_size: nil)
+    def list_terminals(search_query: nil,
+                       otp_query: nil,
+                       countries: nil,
+                       merchant_ids: nil,
+                       store_ids: nil,
+                       brand_models: nil,
+                       page_number: nil,
+                       page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/terminals',
@@ -99,8 +99,8 @@ module AdyenApIs
     # @param [TerminalReassignmentRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_terminals_terminal_id_reassign(terminal_id,
-                                            body: nil)
+    def reassign_terminal(terminal_id,
+                          body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/terminals/{terminalId}/reassign',

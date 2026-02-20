@@ -31,8 +31,8 @@ module AdyenApIs
     # @param [StandalonePaymentCancelRequest] body Optional parameter: TODO:
     # type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_cancels(idempotency_key: nil,
-                     body: nil)
+    def cancel_payment(idempotency_key: nil,
+                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/cancels',
@@ -87,9 +87,9 @@ module AdyenApIs
     # @param [PaymentAmountUpdateRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_payment_psp_reference_amount_updates(payment_psp_reference,
-                                                           idempotency_key: nil,
-                                                           body: nil)
+    def update_payment_amount(payment_psp_reference,
+                              idempotency_key: nil,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/{paymentPspReference}/amountUpdates',
@@ -154,9 +154,9 @@ module AdyenApIs
     # @param [PaymentCancelRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_payment_psp_reference_cancels(payment_psp_reference,
-                                                    idempotency_key: nil,
-                                                    body: nil)
+    def cancel_authorised_payment(payment_psp_reference,
+                                  idempotency_key: nil,
+                                  body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/{paymentPspReference}/cancels',
@@ -220,9 +220,9 @@ module AdyenApIs
     # @param [PaymentCaptureRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_payment_psp_reference_captures(payment_psp_reference,
-                                                     idempotency_key: nil,
-                                                     body: nil)
+    def capture_payment(payment_psp_reference,
+                        idempotency_key: nil,
+                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/{paymentPspReference}/captures',
@@ -290,9 +290,9 @@ module AdyenApIs
     # @param [PaymentRefundRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_payment_psp_reference_refunds(payment_psp_reference,
-                                                    idempotency_key: nil,
-                                                    body: nil)
+    def refund_payment(payment_psp_reference,
+                       idempotency_key: nil,
+                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/{paymentPspReference}/refunds',
@@ -352,9 +352,9 @@ module AdyenApIs
     # @param [PaymentReversalRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_payment_psp_reference_reversals(payment_psp_reference,
-                                                      idempotency_key: nil,
-                                                      body: nil)
+    def reverse_payment(payment_psp_reference,
+                        idempotency_key: nil,
+                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/{paymentPspReference}/reversals',

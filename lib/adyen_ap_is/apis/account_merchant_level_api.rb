@@ -17,8 +17,8 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants(page_number: nil,
-                      page_size: nil)
+    def list_merchants(page_number: nil,
+                       page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants',
@@ -61,7 +61,7 @@ module AdyenApIs
     # @param [CreateMerchantRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants(body: nil)
+    def create_merchant(body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants',
@@ -103,7 +103,7 @@ module AdyenApIs
     # @param [String] merchant_id Required parameter: The unique identifier of
     # the merchant account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id(merchant_id)
+    def get_merchant(merchant_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}',
@@ -150,7 +150,7 @@ module AdyenApIs
     # @param [String] merchant_id Required parameter: The unique identifier of
     # the merchant account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_activate(merchant_id)
+    def activate_merchant(merchant_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/activate',

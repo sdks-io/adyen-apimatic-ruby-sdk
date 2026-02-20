@@ -21,9 +21,9 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_api_credentials(company_id,
-                                                 page_number: nil,
-                                                 page_size: nil)
+    def list_company_api_credentials(company_id,
+                                     page_number: nil,
+                                     page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/apiCredentials',
@@ -87,8 +87,8 @@ module AdyenApIs
     # @param [CreateCompanyApiCredentialRequest] body Optional parameter: TODO:
     # type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_api_credentials(company_id,
-                                                  body: nil)
+    def create_company_api_credential(company_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/apiCredentials',
@@ -136,8 +136,8 @@ module AdyenApIs
     # @param [String] api_credential_id Required parameter: Unique identifier of
     # the API credential.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_api_credentials_api_credential_id(company_id,
-                                                                   api_credential_id)
+    def get_company_api_credential(company_id,
+                                   api_credential_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}',
@@ -188,9 +188,9 @@ module AdyenApIs
     # @param [UpdateCompanyApiCredentialRequest] body Optional parameter: TODO:
     # type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_api_credentials_api_credential_id(company_id,
-                                                                     api_credential_id,
-                                                                     body: nil)
+    def update_company_api_credential(company_id,
+                                      api_credential_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}',

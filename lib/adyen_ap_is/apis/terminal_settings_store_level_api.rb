@@ -29,9 +29,9 @@ module AdyenApIs
     # P400Plus, UX300, UX410, V200cPlus, V240mPlus, V400cPlus, V400m, e280,
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_stores_reference_terminal_logos(merchant_id,
-                                                                  reference,
-                                                                  model)
+    def get_merchant_store_terminal_logo_by_reference(merchant_id,
+                                                      reference,
+                                                      model)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/stores/{reference}/terminalLogos',
@@ -94,10 +94,10 @@ module AdyenApIs
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T
     # @param [Logo] body Optional parameter: TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_stores_reference_terminal_logos(merchant_id,
-                                                                    reference,
-                                                                    model,
-                                                                    body: nil)
+    def update_merchant_store_terminal_logo_by_reference(merchant_id,
+                                                         reference,
+                                                         model,
+                                                         body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/stores/{reference}/terminalLogos',
@@ -159,8 +159,8 @@ module AdyenApIs
     # @param [String] reference Required parameter: The reference that
     # identifies the store.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_stores_reference_terminal_settings(merchant_id,
-                                                                     reference)
+    def get_merchant_store_terminal_settings_by_reference(merchant_id,
+                                                          reference)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/stores/{reference}/terminalSettings',
@@ -224,9 +224,9 @@ module AdyenApIs
     # @param [TerminalSettings] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_stores_reference_terminal_settings(merchant_id,
-                                                                       reference,
-                                                                       body: nil)
+    def update_merchant_store_terminal_settings_by_reference(merchant_id,
+                                                             reference,
+                                                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/stores/{reference}/terminalSettings',
@@ -286,8 +286,8 @@ module AdyenApIs
     # P400Plus, UX300, UX410, V200cPlus, V240mPlus, V400cPlus, V400m, e280,
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_stores_store_id_terminal_logos(store_id,
-                                           model)
+    def get_store_terminal_logo(store_id,
+                                model)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/stores/{storeId}/terminalLogos',
@@ -345,9 +345,9 @@ module AdyenApIs
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T.
     # @param [Logo] body Optional parameter: TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_stores_store_id_terminal_logos(store_id,
-                                             model,
-                                             body: nil)
+    def update_store_terminal_logo(store_id,
+                                   model,
+                                   body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/stores/{storeId}/terminalLogos',
@@ -404,7 +404,7 @@ module AdyenApIs
     # @param [String] store_id Required parameter: The unique identifier of the
     # store.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_stores_store_id_terminal_settings(store_id)
+    def get_store_terminal_settings(store_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/stores/{storeId}/terminalSettings',
@@ -463,8 +463,8 @@ module AdyenApIs
     # @param [TerminalSettings] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_stores_store_id_terminal_settings(store_id,
-                                                body: nil)
+    def update_store_terminal_settings(store_id,
+                                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/stores/{storeId}/terminalSettings',

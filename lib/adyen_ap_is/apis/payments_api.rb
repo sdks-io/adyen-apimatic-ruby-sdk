@@ -54,8 +54,8 @@ module AdyenApIs
     # @param [CardDetailsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_card_details(idempotency_key: nil,
-                          body: nil)
+    def get_card_details(idempotency_key: nil,
+                         body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/cardDetails',
@@ -80,8 +80,8 @@ module AdyenApIs
     # @param [PaymentMethodsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payment_methods(idempotency_key: nil,
-                             body: nil)
+    def get_payment_methods(idempotency_key: nil,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/paymentMethods',
@@ -131,8 +131,8 @@ module AdyenApIs
     # @param [PaymentRequest] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments(idempotency_key: nil,
-                      body: nil)
+    def create_payment(idempotency_key: nil,
+                       body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments',
@@ -175,8 +175,8 @@ module AdyenApIs
     # @param [PaymentDetailsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_payments_details(idempotency_key: nil,
-                              body: nil)
+    def get_payment_details(idempotency_key: nil,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/payments/details',
@@ -228,8 +228,8 @@ module AdyenApIs
     # @param [CreateCheckoutSessionRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_sessions(idempotency_key: nil,
-                      body: nil)
+    def create_checkout_session(idempotency_key: nil,
+                                body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/sessions',
@@ -254,8 +254,8 @@ module AdyenApIs
     # @param [String] session_result Required parameter: The `sessionResult`
     # value from the Drop-in or Component.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_sessions_session_id(session_id,
-                                session_result)
+    def get_checkout_session(session_id,
+                             session_result)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/sessions/{sessionId}',

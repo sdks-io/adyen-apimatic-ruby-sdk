@@ -11,7 +11,7 @@ module AdyenApIs
     # details based on the API Key you used in the request.
     # You can make this request with any of the Management API roles.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_me
+    def get_my_api_credential
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/me',
@@ -48,7 +48,7 @@ module AdyenApIs
     # based on the API key you used in the request.
     # You can make this request with any of the Management API roles.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_me_allowed_origins
+    def list_my_allowed_origins
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/me/allowedOrigins',
@@ -87,7 +87,7 @@ module AdyenApIs
     # @param [CreateAllowedOriginRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_me_allowed_origins(body: nil)
+    def create_my_allowed_origin(body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/me/allowedOrigins',
@@ -129,7 +129,7 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_me_allowed_origins_origin_id(origin_id)
+    def delete_my_allowed_origin(origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/me/allowedOrigins/{originId}',
@@ -169,7 +169,7 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_me_allowed_origins_origin_id(origin_id)
+    def get_my_allowed_origin(origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/me/allowedOrigins/{originId}',
@@ -212,7 +212,7 @@ module AdyenApIs
     # rmissions):
     # * Management API—API credentials read and write
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_me_generate_client_key
+    def generate_my_client_key
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/me/generateClientKey',

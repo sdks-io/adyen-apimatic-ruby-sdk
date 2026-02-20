@@ -21,9 +21,9 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_webhooks(company_id,
-                                          page_number: nil,
-                                          page_size: nil)
+    def list_company_webhooks(company_id,
+                              page_number: nil,
+                              page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/webhooks',
@@ -72,8 +72,8 @@ module AdyenApIs
     # @param [CreateCompanyWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_webhooks(company_id,
-                                           body: nil)
+    def create_company_webhook(company_id,
+                               body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/webhooks',
@@ -119,8 +119,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: Unique identifier of the
     # webhook configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_companies_company_id_webhooks_webhook_id(company_id,
-                                                        webhook_id)
+    def delete_company_webhook(company_id,
+                               webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/companies/{companyId}/webhooks/{webhookId}',
@@ -167,8 +167,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: Unique identifier of the
     # webhook configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_webhooks_webhook_id(company_id,
-                                                     webhook_id)
+    def get_company_webhook(company_id,
+                            webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/webhooks/{webhookId}',
@@ -219,9 +219,9 @@ module AdyenApIs
     # @param [UpdateCompanyWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_webhooks_webhook_id(company_id,
-                                                       webhook_id,
-                                                       body: nil)
+    def update_company_webhook(company_id,
+                               webhook_id,
+                               body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/webhooks/{webhookId}',
@@ -278,8 +278,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: Unique identifier of the
     # webhook configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_webhooks_webhook_id_generate_hmac(company_id,
-                                                                    webhook_id)
+    def generate_company_webhook_hmac(company_id,
+                                      webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/webhooks/{webhookId}/generateHmac',
@@ -338,9 +338,9 @@ module AdyenApIs
     # @param [TestCompanyWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_webhooks_webhook_id_test(company_id,
-                                                           webhook_id,
-                                                           body: nil)
+    def test_company_webhook(company_id,
+                             webhook_id,
+                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/webhooks/{webhookId}/test',

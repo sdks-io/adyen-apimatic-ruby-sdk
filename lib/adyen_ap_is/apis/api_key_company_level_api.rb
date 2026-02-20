@@ -18,8 +18,8 @@ module AdyenApIs
     # @param [String] api_credential_id Required parameter: Unique identifier of
     # the API credential.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_api_credentials_api_credential_id_generate_api_key(company_id,
-                                                                                     api_credential_id)
+    def generate_company_api_key(company_id,
+                                 api_credential_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}/generateApiKey',

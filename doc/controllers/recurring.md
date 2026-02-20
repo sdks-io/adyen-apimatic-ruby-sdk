@@ -10,19 +10,19 @@ recurring_api = client.recurring
 
 ## Methods
 
-* [Post-Forward](../../doc/controllers/recurring.md#post-forward)
-* [Get-Stored Payment Methods](../../doc/controllers/recurring.md#get-stored-payment-methods)
-* [Post-Stored Payment Methods](../../doc/controllers/recurring.md#post-stored-payment-methods)
-* [Delete-Stored Payment Methods-Stored Payment Method Id](../../doc/controllers/recurring.md#delete-stored-payment-methods-stored-payment-method-id)
+* [Forward Request](../../doc/controllers/recurring.md#forward-request)
+* [List Stored Payment Methods](../../doc/controllers/recurring.md#list-stored-payment-methods)
+* [Create Stored Payment Method](../../doc/controllers/recurring.md#create-stored-payment-method)
+* [Delete Stored Payment Method](../../doc/controllers/recurring.md#delete-stored-payment-method)
 
 
-# Post-Forward
+# Forward Request
 
 Forwards the payment details you stored with Adyen to a third-party that you specify and returns the response from the third-party. Supports forwarding stored card details or [network tokens](https://docs.adyen.com/online-payments/network-tokenization). For more information, see [Forward stored payment details](https://docs.adyen.com/online-payments/tokenization/forward-payment-details).
 
 ```ruby
-def post_forward(idempotency_key: nil,
-                 body: nil)
+def forward_request(idempotency_key: nil,
+                    body: nil)
 ```
 
 ## Parameters
@@ -55,7 +55,7 @@ body = CheckoutForwardRequest.new(
   stored_payment_method_id: 'M5N7TQ4TG5PFWR50'
 )
 
-result = recurring_api.post_forward(body: body)
+result = recurring_api.forward_request(body: body)
 
 if result.success?
   puts result.data
@@ -81,13 +81,13 @@ end
 ```
 
 
-# Get-Stored Payment Methods
+# List Stored Payment Methods
 
 Lists the tokens for stored payment details for the shopper identified in the path, if there are any available. The token ID can be used with payment requests for the shopper's payment. A summary of the stored details is included.
 
 ```ruby
-def get_stored_payment_methods(shopper_reference: nil,
-                               merchant_account: nil)
+def list_stored_payment_methods(shopper_reference: nil,
+                                merchant_account: nil)
 ```
 
 ## Parameters
@@ -104,7 +104,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ## Example Usage
 
 ```ruby
-result = recurring_api.get_stored_payment_methods
+result = recurring_api.list_stored_payment_methods
 
 if result.success?
   puts result.data
@@ -143,13 +143,13 @@ end
 ```
 
 
-# Post-Stored Payment Methods
+# Create Stored Payment Method
 
 Creates a token to store the shopper's payment details. This token can be used for the shopper's future payments.
 
 ```ruby
-def post_stored_payment_methods(idempotency_key: nil,
-                                body: nil)
+def create_stored_payment_method(idempotency_key: nil,
+                                 body: nil)
 ```
 
 ## Parameters
@@ -182,7 +182,7 @@ body = StoredPaymentMethodRequest.new(
   shopper_ip: '192.0.2.1'
 )
 
-result = recurring_api.post_stored_payment_methods(body: body)
+result = recurring_api.create_stored_payment_method(body: body)
 
 if result.success?
   puts result.data
@@ -206,14 +206,14 @@ end
 ```
 
 
-# Delete-Stored Payment Methods-Stored Payment Method Id
+# Delete Stored Payment Method
 
 Deletes the token identified in the path. The token can no longer be used with payment requests.
 
 ```ruby
-def delete_stored_payment_methods_stored_payment_method_id(stored_payment_method_id,
-                                                           shopper_reference,
-                                                           merchant_account)
+def delete_stored_payment_method(stored_payment_method_id,
+                                 shopper_reference,
+                                 merchant_account)
 ```
 
 ## Parameters
@@ -237,7 +237,7 @@ shopper_reference = 'shopperReference8'
 
 merchant_account = 'merchantAccount8'
 
-result = recurring_api.delete_stored_payment_methods_stored_payment_method_id(
+result = recurring_api.delete_stored_payment_method(
   stored_payment_method_id,
   shopper_reference,
   merchant_account

@@ -10,13 +10,13 @@ terminalsettings_companylevel_api = client.terminalsettings_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Terminal Logos](../../doc/controllers/terminalsettings-companylevel.md#get-companies-company-id-terminal-logos)
-* [Patch-Companies-Company Id-Terminal Logos](../../doc/controllers/terminalsettings-companylevel.md#patch-companies-company-id-terminal-logos)
-* [Get-Companies-Company Id-Terminal Settings](../../doc/controllers/terminalsettings-companylevel.md#get-companies-company-id-terminal-settings)
-* [Patch-Companies-Company Id-Terminal Settings](../../doc/controllers/terminalsettings-companylevel.md#patch-companies-company-id-terminal-settings)
+* [Get Company Terminal Logo](../../doc/controllers/terminalsettings-companylevel.md#get-company-terminal-logo)
+* [Update Company Terminal Logo](../../doc/controllers/terminalsettings-companylevel.md#update-company-terminal-logo)
+* [Get Company Terminal Settings](../../doc/controllers/terminalsettings-companylevel.md#get-company-terminal-settings)
+* [Update Company Terminal Settings](../../doc/controllers/terminalsettings-companylevel.md#update-company-terminal-settings)
 
 
-# Get-Companies-Company Id-Terminal Logos
+# Get Company Terminal Logo
 
 Returns the logo that is configured for a specific payment terminal model at the company identified in the path.
 
@@ -31,8 +31,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_logos(company_id,
-                                            model)
+def get_company_terminal_logo(company_id,
+                              model)
 ```
 
 ## Parameters
@@ -57,7 +57,7 @@ company_id = 'companyId0'
 
 model = 'model2'
 
-result = terminal_settings_company_level_api.get_companies_company_id_terminal_logos(
+result = terminal_settings_company_level_api.get_company_terminal_logo(
   company_id,
   model
 )
@@ -88,7 +88,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Terminal Logos
+# Update Company Terminal Logo
 
 Updates the logo that is configured for a specific payment terminal model at the company identified in the path. You can update the logo for only one terminal model at a time.
 This logo applies to all terminals of the specified model under the company, unless a different logo is configured at a lower level (merchant account, store, or individual terminal).
@@ -103,9 +103,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_companies_company_id_terminal_logos(company_id,
-                                              model,
-                                              body: nil)
+def update_company_terminal_logo(company_id,
+                                 model,
+                                 body: nil)
 ```
 
 ## Parameters
@@ -135,7 +135,7 @@ body = Logo.new(
   data: ''
 )
 
-result = terminal_settings_company_level_api.patch_companies_company_id_terminal_logos(
+result = terminal_settings_company_level_api.update_company_terminal_logo(
   company_id,
   model,
   body: body
@@ -167,7 +167,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Terminal Settings
+# Get Company Terminal Settings
 
 Returns the payment terminal settings that are configured for the company identified in the path. These settings apply to all terminals under the company, unless different values are configured at a lower level (merchant account, store, or individual terminal).
 
@@ -183,7 +183,7 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_companies_company_id_terminal_settings(company_id)
+def get_company_terminal_settings(company_id)
 ```
 
 ## Parameters
@@ -205,7 +205,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = terminal_settings_company_level_api.get_companies_company_id_terminal_settings(company_id)
+result = terminal_settings_company_level_api.get_company_terminal_settings(company_id)
 
 if result.success?
   puts result.data
@@ -346,7 +346,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Terminal Settings
+# Update Company Terminal Settings
 
 Updates payment terminal settings for the company identified in the path. These settings apply to all terminals under the company, unless different values are configured at a lower level (merchant account, store, or individual terminal).
 
@@ -365,8 +365,8 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_companies_company_id_terminal_settings(company_id,
-                                                 body: nil)
+def update_company_terminal_settings(company_id,
+                                     body: nil)
 ```
 
 ## Parameters
@@ -435,7 +435,7 @@ body = TerminalSettings.new(
   )
 )
 
-result = terminal_settings_company_level_api.patch_companies_company_id_terminal_settings(
+result = terminal_settings_company_level_api.update_company_terminal_settings(
   company_id,
   body: body
 )

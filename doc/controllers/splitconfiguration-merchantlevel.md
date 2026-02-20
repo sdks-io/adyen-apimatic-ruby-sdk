@@ -10,18 +10,18 @@ splitconfiguration_merchantlevel_api = client.splitconfiguration_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Split Configurations](../../doc/controllers/splitconfiguration-merchantlevel.md#get-merchants-merchant-id-split-configurations)
-* [Post-Merchants-Merchant Id-Split Configurations](../../doc/controllers/splitconfiguration-merchantlevel.md#post-merchants-merchant-id-split-configurations)
-* [Delete-Merchants-Merchant Id-Split Configurations-Split Configuration Id](../../doc/controllers/splitconfiguration-merchantlevel.md#delete-merchants-merchant-id-split-configurations-split-configuration-id)
-* [Get-Merchants-Merchant Id-Split Configurations-Split Configuration Id](../../doc/controllers/splitconfiguration-merchantlevel.md#get-merchants-merchant-id-split-configurations-split-configuration-id)
-* [Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id](../../doc/controllers/splitconfiguration-merchantlevel.md#patch-merchants-merchant-id-split-configurations-split-configuration-id)
-* [Post-Merchants-Merchant Id-Split Configurations-Split Configuration Id](../../doc/controllers/splitconfiguration-merchantlevel.md#post-merchants-merchant-id-split-configurations-split-configuration-id)
-* [Delete-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id](../../doc/controllers/splitconfiguration-merchantlevel.md#delete-merchants-merchant-id-split-configurations-split-configuration-id-rules-rule-id)
-* [Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id](../../doc/controllers/splitconfiguration-merchantlevel.md#patch-merchants-merchant-id-split-configurations-split-configuration-id-rules-rule-id)
-* [Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id-Split Logic-Split Logic Id](../../doc/controllers/splitconfiguration-merchantlevel.md#patch-merchants-merchant-id-split-configurations-split-configuration-id-rules-rule-id-split-logic-split-logic-id)
+* [List Split Configurations](../../doc/controllers/splitconfiguration-merchantlevel.md#list-split-configurations)
+* [Create Split Configuration](../../doc/controllers/splitconfiguration-merchantlevel.md#create-split-configuration)
+* [Delete Split Configuration](../../doc/controllers/splitconfiguration-merchantlevel.md#delete-split-configuration)
+* [Get Split Configuration](../../doc/controllers/splitconfiguration-merchantlevel.md#get-split-configuration)
+* [Update Split Configuration](../../doc/controllers/splitconfiguration-merchantlevel.md#update-split-configuration)
+* [Create Split Configuration Rule](../../doc/controllers/splitconfiguration-merchantlevel.md#create-split-configuration-rule)
+* [Delete Split Configuration Rule](../../doc/controllers/splitconfiguration-merchantlevel.md#delete-split-configuration-rule)
+* [Update Split Configuration Rule](../../doc/controllers/splitconfiguration-merchantlevel.md#update-split-configuration-rule)
+* [Update Split Logic](../../doc/controllers/splitconfiguration-merchantlevel.md#update-split-logic)
 
 
-# Get-Merchants-Merchant Id-Split Configurations
+# List Split Configurations
 
 Returns the list of split configuration profiles for the merchant account.
 
@@ -30,7 +30,7 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def get_merchants_merchant_id_split_configurations(merchant_id)
+def list_split_configurations(merchant_id)
 ```
 
 ## Parameters
@@ -52,7 +52,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = split_configuration_merchant_level_api.get_merchants_merchant_id_split_configurations(merchant_id)
+result = split_configuration_merchant_level_api.list_split_configurations(merchant_id)
 
 if result.success?
   puts result.data
@@ -162,7 +162,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Split Configurations
+# Create Split Configuration
 
 Creates a split configuration profile to [split payments automatically](https://docs.adyen.com/platforms/automatic-split-configuration/). After you [associate it with a store](https://docs.adyen.com/api-explorer/Management/latest/patch/merchants/(merchantId)/stores/(storeId)#request-splitConfiguration) in your merchant account, it splits the funds of all transactions processed through that store between your liable balance account and [your user's balance account](https://docs.adyen.com/api-explorer/Management/latest/patch/merchants/(merchantId)/stores/(storeId)#request-splitConfiguration-balanceAccountId).
 
@@ -171,8 +171,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def post_merchants_merchant_id_split_configurations(merchant_id,
-                                                    body: nil)
+def create_split_configuration(merchant_id,
+                               body: nil)
 ```
 
 ## Parameters
@@ -222,7 +222,7 @@ body = SplitConfiguration.new(
   ]
 )
 
-result = split_configuration_merchant_level_api.post_merchants_merchant_id_split_configurations(
+result = split_configuration_merchant_level_api.create_split_configuration(
   merchant_id,
   body: body
 )
@@ -279,7 +279,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Delete-Merchants-Merchant Id-Split Configurations-Split Configuration Id
+# Delete Split Configuration
 
 Deletes the split configuration profile specified in the path.
 
@@ -288,8 +288,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def delete_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                             split_configuration_id)
+def delete_split_configuration(merchant_id,
+                               split_configuration_id)
 ```
 
 ## Parameters
@@ -314,7 +314,7 @@ merchant_id = 'merchantId6'
 
 split_configuration_id = 'splitConfigurationId4'
 
-result = split_configuration_merchant_level_api.delete_merchants_merchant_id_split_configurations_split_configuration_id(
+result = split_configuration_merchant_level_api.delete_split_configuration(
   merchant_id,
   split_configuration_id
 )
@@ -337,7 +337,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Split Configurations-Split Configuration Id
+# Get Split Configuration
 
 Returns the details of the split configuration profile specified in the path.
 
@@ -346,8 +346,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def get_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                          split_configuration_id)
+def get_split_configuration(merchant_id,
+                            split_configuration_id)
 ```
 
 ## Parameters
@@ -372,7 +372,7 @@ merchant_id = 'merchantId6'
 
 split_configuration_id = 'splitConfigurationId4'
 
-result = split_configuration_merchant_level_api.get_merchants_merchant_id_split_configurations_split_configuration_id(
+result = split_configuration_merchant_level_api.get_split_configuration(
   merchant_id,
   split_configuration_id
 )
@@ -452,7 +452,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id
+# Update Split Configuration
 
 Changes the description of the split configuration profile specified in the path.
 
@@ -461,9 +461,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def patch_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                            split_configuration_id,
-                                                                            body: nil)
+def update_split_configuration(merchant_id,
+                               split_configuration_id,
+                               body: nil)
 ```
 
 ## Parameters
@@ -493,7 +493,7 @@ body = UpdateSplitConfigurationRequest.new(
   description: 'Updated description for the split configuration'
 )
 
-result = split_configuration_merchant_level_api.patch_merchants_merchant_id_split_configurations_split_configuration_id(
+result = split_configuration_merchant_level_api.update_split_configuration(
   merchant_id,
   split_configuration_id,
   body: body
@@ -574,7 +574,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Split Configurations-Split Configuration Id
+# Create Split Configuration Rule
 
 [Creates a rule](https://docs.adyen.com/platforms/automatic-split-configuration/manage-split-configurations/api/#create-rule) in the split configuration profile specified in the path.
 
@@ -583,9 +583,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def post_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                           split_configuration_id,
-                                                                           body: nil)
+def create_split_configuration_rule(merchant_id,
+                                    split_configuration_id,
+                                    body: nil)
 ```
 
 ## Parameters
@@ -633,7 +633,7 @@ body = SplitConfigurationRule.new(
   )
 )
 
-result = split_configuration_merchant_level_api.post_merchants_merchant_id_split_configurations_split_configuration_id(
+result = split_configuration_merchant_level_api.create_split_configuration_rule(
   merchant_id,
   split_configuration_id,
   body: body
@@ -714,7 +714,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Delete-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id
+# Delete Split Configuration Rule
 
 Deletes the rule specified in the path.
 
@@ -723,9 +723,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def delete_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(merchant_id,
-                                                                                           split_configuration_id,
-                                                                                           rule_id)
+def delete_split_configuration_rule(merchant_id,
+                                    split_configuration_id,
+                                    rule_id)
 ```
 
 ## Parameters
@@ -753,7 +753,7 @@ split_configuration_id = 'splitConfigurationId4'
 
 rule_id = 'ruleId4'
 
-result = split_configuration_merchant_level_api.delete_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(
+result = split_configuration_merchant_level_api.delete_split_configuration_rule(
   merchant_id,
   split_configuration_id,
   rule_id
@@ -777,7 +777,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id
+# Update Split Configuration Rule
 
 Changes the [split conditions of the rule](https://docs.adyen.com/platforms/automatic-split-configuration/manage-split-configurations/api/#update-condition) specified in the path.
 
@@ -786,10 +786,10 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(merchant_id,
-                                                                                          split_configuration_id,
-                                                                                          rule_id,
-                                                                                          body: nil)
+def update_split_configuration_rule(merchant_id,
+                                    split_configuration_id,
+                                    rule_id,
+                                    body: nil)
 ```
 
 ## Parameters
@@ -825,7 +825,7 @@ body = UpdateSplitConfigurationRuleRequest.new(
   shopper_interaction: 'ANY'
 )
 
-result = split_configuration_merchant_level_api.patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(
+result = split_configuration_merchant_level_api.update_split_configuration_rule(
   merchant_id,
   split_configuration_id,
   rule_id,
@@ -907,7 +907,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Split Configurations-Split Configuration Id-Rules-Rule Id-Split Logic-Split Logic Id
+# Update Split Logic
 
 Changes the [split logic](https://docs.adyen.com/platforms/automatic-split-configuration/manage-split-configurations/api/#update-split-logic) specified in the path.
 
@@ -916,11 +916,11 @@ To make this request, your API credential must have the following [role](https:/
 * Management API - SplitConfiguration read and write
 
 ```ruby
-def patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id_split_logic_split_logic_id(merchant_id,
-                                                                                                                     split_configuration_id,
-                                                                                                                     rule_id,
-                                                                                                                     split_logic_id,
-                                                                                                                     body: nil)
+def update_split_logic(merchant_id,
+                       split_configuration_id,
+                       rule_id,
+                       split_logic_id,
+                       body: nil)
 ```
 
 ## Parameters
@@ -968,7 +968,7 @@ body = UpdateSplitConfigurationLogicRequest.new(
   tip: Tip::ADDTOLIABLEACCOUNT
 )
 
-result = split_configuration_merchant_level_api.patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id_split_logic_split_logic_id(
+result = split_configuration_merchant_level_api.update_split_logic(
   merchant_id,
   split_configuration_id,
   rule_id,

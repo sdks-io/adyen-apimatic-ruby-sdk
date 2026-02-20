@@ -9,7 +9,7 @@ ap_ikey_companylevel_api = client.ap_ikey_companylevel
 `ApIkeyCompanylevelApi`
 
 
-# Post-Companies-Company Id-Api Credentials-Api Credential Id-Generate Api Key
+# Generate Company Api Key
 
 Returns a new API key for the API credential. You can use the new API key a few minutes after generating it. The old API key stops working 24 hours after generating a new one.
 
@@ -18,8 +18,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def post_companies_company_id_api_credentials_api_credential_id_generate_api_key(company_id,
-                                                                                 api_credential_id)
+def generate_company_api_key(company_id,
+                             api_credential_id)
 ```
 
 ## Parameters
@@ -44,7 +44,7 @@ company_id = 'companyId0'
 
 api_credential_id = 'apiCredentialId8'
 
-result = api_key_company_level_api.post_companies_company_id_api_credentials_api_credential_id_generate_api_key(
+result = api_key_company_level_api.generate_company_api_key(
   company_id,
   api_credential_id
 )

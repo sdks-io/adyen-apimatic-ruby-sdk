@@ -10,13 +10,13 @@ users_companylevel_api = client.users_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Users](../../doc/controllers/users-companylevel.md#get-companies-company-id-users)
-* [Post-Companies-Company Id-Users](../../doc/controllers/users-companylevel.md#post-companies-company-id-users)
-* [Get-Companies-Company Id-Users-User Id](../../doc/controllers/users-companylevel.md#get-companies-company-id-users-user-id)
-* [Patch-Companies-Company Id-Users-User Id](../../doc/controllers/users-companylevel.md#patch-companies-company-id-users-user-id)
+* [List Company Users](../../doc/controllers/users-companylevel.md#list-company-users)
+* [Create Company User](../../doc/controllers/users-companylevel.md#create-company-user)
+* [Get Company User](../../doc/controllers/users-companylevel.md#get-company-user)
+* [Update Company User](../../doc/controllers/users-companylevel.md#update-company-user)
 
 
-# Get-Companies-Company Id-Users
+# List Company Users
 
 Returns the list of users for the `companyId` identified in the path.
 
@@ -25,10 +25,10 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def get_companies_company_id_users(company_id,
-                                   page_number: nil,
-                                   page_size: nil,
-                                   username: nil)
+def list_company_users(company_id,
+                       page_number: nil,
+                       page_size: nil,
+                       username: nil)
 ```
 
 ## Parameters
@@ -53,7 +53,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = users_company_level_api.get_companies_company_id_users(company_id)
+result = users_company_level_api.list_company_users(company_id)
 
 if result.success?
   puts result.data
@@ -73,7 +73,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Users
+# Create Company User
 
 Creates the user for the `companyId` identified in the path.
 
@@ -82,8 +82,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def post_companies_company_id_users(company_id,
-                                    body: nil)
+def create_company_user(company_id,
+                        body: nil)
 ```
 
 ## Parameters
@@ -124,7 +124,7 @@ body = CreateCompanyUserRequest.new(
   time_zone_code: 'Europe/Amsterdam'
 )
 
-result = users_company_level_api.post_companies_company_id_users(
+result = users_company_level_api.create_company_user(
   company_id,
   body: body
 )
@@ -175,7 +175,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Users-User Id
+# Get Company User
 
 Returns user details for the `userId` and the `companyId` identified in the path.
 
@@ -184,8 +184,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def get_companies_company_id_users_user_id(company_id,
-                                           user_id)
+def get_company_user(company_id,
+                     user_id)
 ```
 
 ## Parameters
@@ -210,7 +210,7 @@ company_id = 'companyId0'
 
 user_id = 'userId0'
 
-result = users_company_level_api.get_companies_company_id_users_user_id(
+result = users_company_level_api.get_company_user(
   company_id,
   user_id
 )
@@ -233,7 +233,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Users-User Id
+# Update Company User
 
 Updates user details for the `userId` and the `companyId` identified in the path.
 
@@ -242,9 +242,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def patch_companies_company_id_users_user_id(company_id,
-                                             user_id,
-                                             body: nil)
+def update_company_user(company_id,
+                        user_id,
+                        body: nil)
 ```
 
 ## Parameters
@@ -270,7 +270,7 @@ company_id = 'companyId0'
 
 user_id = 'userId0'
 
-result = users_company_level_api.patch_companies_company_id_users_user_id(
+result = users_company_level_api.update_company_user(
   company_id,
   user_id
 )

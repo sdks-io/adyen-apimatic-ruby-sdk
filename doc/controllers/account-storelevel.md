@@ -10,17 +10,17 @@ account_storelevel_api = client.account_storelevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Stores](../../doc/controllers/account-storelevel.md#get-merchants-merchant-id-stores)
-* [Post-Merchants-Merchant Id-Stores](../../doc/controllers/account-storelevel.md#post-merchants-merchant-id-stores)
-* [Get-Merchants-Merchant Id-Stores-Store Id](../../doc/controllers/account-storelevel.md#get-merchants-merchant-id-stores-store-id)
-* [Patch-Merchants-Merchant Id-Stores-Store Id](../../doc/controllers/account-storelevel.md#patch-merchants-merchant-id-stores-store-id)
-* [Get-Stores](../../doc/controllers/account-storelevel.md#get-stores)
-* [Post-Stores](../../doc/controllers/account-storelevel.md#post-stores)
-* [Get-Stores-Store Id](../../doc/controllers/account-storelevel.md#get-stores-store-id)
-* [Patch-Stores-Store Id](../../doc/controllers/account-storelevel.md#patch-stores-store-id)
+* [List Merchant Stores](../../doc/controllers/account-storelevel.md#list-merchant-stores)
+* [Create Merchant Store](../../doc/controllers/account-storelevel.md#create-merchant-store)
+* [Get Merchant Store](../../doc/controllers/account-storelevel.md#get-merchant-store)
+* [Update Merchant Store](../../doc/controllers/account-storelevel.md#update-merchant-store)
+* [List Stores](../../doc/controllers/account-storelevel.md#list-stores)
+* [Create Store](../../doc/controllers/account-storelevel.md#create-store)
+* [Get Store](../../doc/controllers/account-storelevel.md#get-store)
+* [Update Store](../../doc/controllers/account-storelevel.md#update-store)
 
 
-# Get-Merchants-Merchant Id-Stores
+# List Merchant Stores
 
 Returns a list of stores for the merchant account identified in the path. The list is grouped into pages as defined by the query parameters.
 
@@ -32,10 +32,10 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_stores(merchant_id,
-                                     page_number: nil,
-                                     page_size: nil,
-                                     reference: nil)
+def list_merchant_stores(merchant_id,
+                         page_number: nil,
+                         page_size: nil,
+                         reference: nil)
 ```
 
 ## Parameters
@@ -60,7 +60,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = account_store_level_api.get_merchants_merchant_id_stores(merchant_id)
+result = account_store_level_api.list_merchant_stores(merchant_id)
 
 if result.success?
   puts result.data
@@ -148,7 +148,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Stores
+# Create Merchant Store
 
 Creates a store for the merchant account identified in the path.
 
@@ -159,8 +159,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_merchants_merchant_id_stores(merchant_id,
-                                      body: nil)
+def create_merchant_store(merchant_id,
+                          body: nil)
 ```
 
 ## Parameters
@@ -199,7 +199,7 @@ body = StoreCreationRequest.new(
   reference: 'Spring_store_2'
 )
 
-result = account_store_level_api.post_merchants_merchant_id_stores(
+result = account_store_level_api.create_merchant_store(
   merchant_id,
   body: body
 )
@@ -250,7 +250,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Stores-Store Id
+# Get Merchant Store
 
 Returns the details of the store identified in the path.
 
@@ -262,8 +262,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_stores_store_id(merchant_id,
-                                              store_id)
+def get_merchant_store(merchant_id,
+                       store_id)
 ```
 
 ## Parameters
@@ -288,7 +288,7 @@ merchant_id = 'merchantId6'
 
 store_id = 'storeId6'
 
-result = account_store_level_api.get_merchants_merchant_id_stores_store_id(
+result = account_store_level_api.get_merchant_store(
   merchant_id,
   store_id
 )
@@ -337,7 +337,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Stores-Store Id
+# Update Merchant Store
 
 Updates the store identified in the path. You can only update some store parameters.
 
@@ -348,9 +348,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_stores_store_id(merchant_id,
-                                                store_id,
-                                                body: nil)
+def update_merchant_store(merchant_id,
+                          store_id,
+                          body: nil)
 ```
 
 ## Parameters
@@ -385,7 +385,7 @@ body = UpdateStoreRequest.new(
   )
 )
 
-result = account_store_level_api.patch_merchants_merchant_id_stores_store_id(
+result = account_store_level_api.update_merchant_store(
   merchant_id,
   store_id,
   body: body
@@ -437,7 +437,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Stores
+# List Stores
 
 Returns a list of stores. The list is grouped into pages as defined by the query parameters.
 
@@ -449,10 +449,10 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_stores(page_number: nil,
-               page_size: nil,
-               reference: nil,
-               merchant_id: nil)
+def list_stores(page_number: nil,
+                page_size: nil,
+                reference: nil,
+                merchant_id: nil)
 ```
 
 ## Parameters
@@ -475,7 +475,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ## Example Usage
 
 ```ruby
-result = account_store_level_api.get_stores
+result = account_store_level_api.list_stores
 
 if result.success?
   puts result.data
@@ -563,7 +563,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Stores
+# Create Store
 
 Creates a store for the merchant account specified in the request.
 
@@ -574,7 +574,7 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_stores(body: nil)
+def create_store(body: nil)
 ```
 
 ## Parameters
@@ -611,7 +611,7 @@ body = StoreCreationWithMerchantCodeRequest.new(
   reference: 'Spring_store_2'
 )
 
-result = account_store_level_api.post_stores(body: body)
+result = account_store_level_api.create_store(body: body)
 
 if result.success?
   puts result.data
@@ -659,7 +659,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Stores-Store Id
+# Get Store
 
 Returns the details of the store identified in the path.
 
@@ -671,7 +671,7 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_stores_store_id(store_id)
+def get_store(store_id)
 ```
 
 ## Parameters
@@ -693,7 +693,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 store_id = 'storeId6'
 
-result = account_store_level_api.get_stores_store_id(store_id)
+result = account_store_level_api.get_store(store_id)
 
 if result.success?
   puts result.data
@@ -740,7 +740,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Stores-Store Id
+# Update Store
 
 Updates the store identified in the path.
 You can only update some store parameters.
@@ -752,8 +752,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_stores_store_id(store_id,
-                          body: nil)
+def update_store(store_id,
+                 body: nil)
 ```
 
 ## Parameters
@@ -785,7 +785,7 @@ body = UpdateStoreRequest.new(
   )
 )
 
-result = account_store_level_api.patch_stores_store_id(
+result = account_store_level_api.update_store(
   store_id,
   body: body
 )

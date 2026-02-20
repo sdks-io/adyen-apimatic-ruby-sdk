@@ -10,21 +10,21 @@ utility_api = client.utility
 
 ## Methods
 
-* [Post-Apple Pay-Sessions](../../doc/controllers/utility.md#post-apple-pay-sessions)
-* [Post-Origin Keys](../../doc/controllers/utility.md#post-origin-keys)
-* [Post-Paypal-Update Order](../../doc/controllers/utility.md#post-paypal-update-order)
-* [Post-Validate Shopper Id](../../doc/controllers/utility.md#post-validate-shopper-id)
+* [Get Apple Pay Session](../../doc/controllers/utility.md#get-apple-pay-session)
+* [Generate Origin Keys](../../doc/controllers/utility.md#generate-origin-keys)
+* [Update Pay Pal Order](../../doc/controllers/utility.md#update-pay-pal-order)
+* [Validate Shopper Id](../../doc/controllers/utility.md#validate-shopper-id)
 
 
-# Post-Apple Pay-Sessions
+# Get Apple Pay Session
 
 You need to use this endpoint if you have an API-only integration with Apple Pay which uses Adyen's Apple Pay certificate.
 
 The endpoint returns the Apple Pay session data which you need to complete the [Apple Pay session validation](https://docs.adyen.com/payment-methods/apple-pay/api-only?tab=adyen-certificate-validation_1#complete-apple-pay-session-validation).
 
 ```ruby
-def post_apple_pay_sessions(idempotency_key: nil,
-                            body: nil)
+def get_apple_pay_session(idempotency_key: nil,
+                          body: nil)
 ```
 
 ## Parameters
@@ -47,7 +47,7 @@ body = ApplePaySessionRequest.new(
   merchant_identifier: 'YOUR_MERCHANT_ID'
 )
 
-result = utility_api.post_apple_pay_sessions(body: body)
+result = utility_api.get_apple_pay_session(body: body)
 
 if result.success?
   puts result.data
@@ -65,7 +65,7 @@ end
 ```
 
 
-# Post-Origin Keys
+# Generate Origin Keys
 
 **This endpoint is deprecated.**
 
@@ -74,8 +74,8 @@ This operation takes the origin domains and returns a JSON object containing the
 > If you're still using origin key for your Web Drop-in or Components integration, we recommend [switching to client key](https://docs.adyen.com/development-resources/client-side-authentication/migrate-from-origin-key-to-client-key). This allows you to use a single key for all origins, add or remove origins without generating a new key, and detect the card type from the number entered in your payment form.
 
 ```ruby
-def post_origin_keys(idempotency_key: nil,
-                     body: nil)
+def generate_origin_keys(idempotency_key: nil,
+                         body: nil)
 ```
 
 ## Parameters
@@ -100,7 +100,7 @@ body = UtilityRequest.new(
   ]
 )
 
-result = utility_api.post_origin_keys(body: body)
+result = utility_api.generate_origin_keys(body: body)
 
 if result.success?
   puts result.data
@@ -132,13 +132,13 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`ServiceErrorException`](../../doc/models/service-error-exception.md) |
 
 
-# Post-Paypal-Update Order
+# Update Pay Pal Order
 
 Updates the order for PayPal Express Checkout. This can be used to update the PayPal lightbox with an updated amount and delivery methods based on the delivery address.
 
 ```ruby
-def post_paypal_update_order(idempotency_key: nil,
-                             body: nil)
+def update_pay_pal_order(idempotency_key: nil,
+                         body: nil)
 ```
 
 ## Parameters
@@ -186,7 +186,7 @@ body = PaypalUpdateOrderRequest.new(
   psp_reference: 'DZ4DPSHB4WD2WN82'
 )
 
-result = utility_api.post_paypal_update_order(body: body)
+result = utility_api.update_pay_pal_order(body: body)
 
 if result.success?
   puts result.data
@@ -215,14 +215,14 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`ServiceErrorException`](../../doc/models/service-error-exception.md) |
 
 
-# Post-Validate Shopper Id
+# Validate Shopper Id
 
 Validates the shopperId.
 
 :information_source: **Note** This endpoint does not require authentication.
 
 ```ruby
-def post_validate_shopper_id(body)
+def validate_shopper_id(body)
 ```
 
 ## Parameters
@@ -245,7 +245,7 @@ body = ValidateShopperIdRequest.new(
   )
 )
 
-result = utility_api.post_validate_shopper_id(body)
+result = utility_api.validate_shopper_id(body)
 
 if result.success?
   puts result.data

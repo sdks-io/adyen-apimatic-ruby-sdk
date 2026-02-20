@@ -21,7 +21,7 @@ module AdyenApIs
     # @param [String] terminal_id Required parameter: The unique identifier of
     # the payment terminal.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_terminals_terminal_id_terminal_logos(terminal_id)
+    def get_terminal_logo(terminal_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/terminals/{terminalId}/terminalLogos',
@@ -69,8 +69,8 @@ module AdyenApIs
     # the payment terminal.
     # @param [Logo] body Optional parameter: TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_terminals_terminal_id_terminal_logos(terminal_id,
-                                                   body: nil)
+    def update_terminal_logo(terminal_id,
+                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/terminals/{terminalId}/terminalLogos',
@@ -124,7 +124,7 @@ module AdyenApIs
     # @param [String] terminal_id Required parameter: The unique identifier of
     # the payment terminal.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_terminals_terminal_id_terminal_settings(terminal_id)
+    def get_terminal_settings(terminal_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/terminals/{terminalId}/terminalSettings',
@@ -182,8 +182,8 @@ module AdyenApIs
     # @param [TerminalSettings] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_terminals_terminal_id_terminal_settings(terminal_id,
-                                                      body: nil)
+    def update_terminal_settings(terminal_id,
+                                 body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/terminals/{terminalId}/terminalSettings',

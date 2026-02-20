@@ -10,14 +10,14 @@ payoutsettings_merchantlevel_api = client.payoutsettings_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Payout Settings](../../doc/controllers/payoutsettings-merchantlevel.md#get-merchants-merchant-id-payout-settings)
-* [Post-Merchants-Merchant Id-Payout Settings](../../doc/controllers/payoutsettings-merchantlevel.md#post-merchants-merchant-id-payout-settings)
-* [Delete-Merchants-Merchant Id-Payout Settings-Payout Settings Id](../../doc/controllers/payoutsettings-merchantlevel.md#delete-merchants-merchant-id-payout-settings-payout-settings-id)
-* [Get-Merchants-Merchant Id-Payout Settings-Payout Settings Id](../../doc/controllers/payoutsettings-merchantlevel.md#get-merchants-merchant-id-payout-settings-payout-settings-id)
-* [Patch-Merchants-Merchant Id-Payout Settings-Payout Settings Id](../../doc/controllers/payoutsettings-merchantlevel.md#patch-merchants-merchant-id-payout-settings-payout-settings-id)
+* [List Payout Settings](../../doc/controllers/payoutsettings-merchantlevel.md#list-payout-settings)
+* [Create Payout Setting](../../doc/controllers/payoutsettings-merchantlevel.md#create-payout-setting)
+* [Delete Payout Setting](../../doc/controllers/payoutsettings-merchantlevel.md#delete-payout-setting)
+* [Get Payout Setting](../../doc/controllers/payoutsettings-merchantlevel.md#get-payout-setting)
+* [Update Payout Setting](../../doc/controllers/payoutsettings-merchantlevel.md#update-payout-setting)
 
 
-# Get-Merchants-Merchant Id-Payout Settings
+# List Payout Settings
 
 Returns the list of payout settings for the merchant account identified in the path.
 
@@ -28,7 +28,7 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Payout account settings read
 
 ```ruby
-def get_merchants_merchant_id_payout_settings(merchant_id)
+def list_payout_settings(merchant_id)
 ```
 
 ## Parameters
@@ -50,7 +50,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = payout_settings_merchant_level_api.get_merchants_merchant_id_payout_settings(merchant_id)
+result = payout_settings_merchant_level_api.list_payout_settings(merchant_id)
 
 if result.success?
   puts result.data
@@ -70,7 +70,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Payout Settings
+# Create Payout Setting
 
 Sends a request to add a payout setting for the merchant account specified in the path. A payout setting links the merchant account to the [transfer instrument](https://docs.adyen.com/api-explorer/#/legalentity/latest/post/transferInstruments) that contains the details of the payout bank account. Adyen verifies the bank account before allowing and enabling the payout setting.
 
@@ -83,8 +83,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Payout account settings read and write
 
 ```ruby
-def post_merchants_merchant_id_payout_settings(merchant_id,
-                                               body: nil)
+def create_payout_setting(merchant_id,
+                          body: nil)
 ```
 
 ## Parameters
@@ -107,7 +107,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = payout_settings_merchant_level_api.post_merchants_merchant_id_payout_settings(merchant_id)
+result = payout_settings_merchant_level_api.create_payout_setting(merchant_id)
 
 if result.success?
   puts result.data
@@ -127,7 +127,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Delete-Merchants-Merchant Id-Payout Settings-Payout Settings Id
+# Delete Payout Setting
 
 Deletes the payout setting identified in the path.
 
@@ -138,8 +138,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Payout account settings read and write
 
 ```ruby
-def delete_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                    payout_settings_id)
+def delete_payout_setting(merchant_id,
+                          payout_settings_id)
 ```
 
 ## Parameters
@@ -164,7 +164,7 @@ merchant_id = 'merchantId6'
 
 payout_settings_id = 'payoutSettingsId6'
 
-result = payout_settings_merchant_level_api.delete_merchants_merchant_id_payout_settings_payout_settings_id(
+result = payout_settings_merchant_level_api.delete_payout_setting(
   merchant_id,
   payout_settings_id
 )
@@ -187,7 +187,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Payout Settings-Payout Settings Id
+# Get Payout Setting
 
 Returns the payout setting identified in the path.
 
@@ -198,8 +198,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Payout account settings read
 
 ```ruby
-def get_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                 payout_settings_id)
+def get_payout_setting(merchant_id,
+                       payout_settings_id)
 ```
 
 ## Parameters
@@ -224,7 +224,7 @@ merchant_id = 'merchantId6'
 
 payout_settings_id = 'payoutSettingsId6'
 
-result = payout_settings_merchant_level_api.get_merchants_merchant_id_payout_settings_payout_settings_id(
+result = payout_settings_merchant_level_api.get_payout_setting(
   merchant_id,
   payout_settings_id
 )
@@ -247,7 +247,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Payout Settings-Payout Settings Id
+# Update Payout Setting
 
 Updates the payout setting identified in the path. You can enable or disable the payout setting.
 
@@ -258,9 +258,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Payout account settings read and write
 
 ```ruby
-def patch_merchants_merchant_id_payout_settings_payout_settings_id(merchant_id,
-                                                                   payout_settings_id,
-                                                                   body: nil)
+def update_payout_setting(merchant_id,
+                          payout_settings_id,
+                          body: nil)
 ```
 
 ## Parameters
@@ -286,7 +286,7 @@ merchant_id = 'merchantId6'
 
 payout_settings_id = 'payoutSettingsId6'
 
-result = payout_settings_merchant_level_api.patch_merchants_merchant_id_payout_settings_payout_settings_id(
+result = payout_settings_merchant_level_api.update_payout_setting(
   merchant_id,
   payout_settings_id
 )

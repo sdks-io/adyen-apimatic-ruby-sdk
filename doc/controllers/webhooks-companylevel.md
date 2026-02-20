@@ -10,16 +10,16 @@ webhooks_companylevel_api = client.webhooks_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Webhooks](../../doc/controllers/webhooks-companylevel.md#get-companies-company-id-webhooks)
-* [Post-Companies-Company Id-Webhooks](../../doc/controllers/webhooks-companylevel.md#post-companies-company-id-webhooks)
-* [Delete-Companies-Company Id-Webhooks-Webhook Id](../../doc/controllers/webhooks-companylevel.md#delete-companies-company-id-webhooks-webhook-id)
-* [Get-Companies-Company Id-Webhooks-Webhook Id](../../doc/controllers/webhooks-companylevel.md#get-companies-company-id-webhooks-webhook-id)
-* [Patch-Companies-Company Id-Webhooks-Webhook Id](../../doc/controllers/webhooks-companylevel.md#patch-companies-company-id-webhooks-webhook-id)
-* [Post-Companies-Company Id-Webhooks-Webhook Id-Generate Hmac](../../doc/controllers/webhooks-companylevel.md#post-companies-company-id-webhooks-webhook-id-generate-hmac)
-* [Post-Companies-Company Id-Webhooks-Webhook Id-Test](../../doc/controllers/webhooks-companylevel.md#post-companies-company-id-webhooks-webhook-id-test)
+* [List Company Webhooks](../../doc/controllers/webhooks-companylevel.md#list-company-webhooks)
+* [Create Company Webhook](../../doc/controllers/webhooks-companylevel.md#create-company-webhook)
+* [Delete Company Webhook](../../doc/controllers/webhooks-companylevel.md#delete-company-webhook)
+* [Get Company Webhook](../../doc/controllers/webhooks-companylevel.md#get-company-webhook)
+* [Update Company Webhook](../../doc/controllers/webhooks-companylevel.md#update-company-webhook)
+* [Generate Company Webhook Hmac](../../doc/controllers/webhooks-companylevel.md#generate-company-webhook-hmac)
+* [Test Company Webhook](../../doc/controllers/webhooks-companylevel.md#test-company-webhook)
 
 
-# Get-Companies-Company Id-Webhooks
+# List Company Webhooks
 
 Lists all webhook configurations for the company account.
 
@@ -29,9 +29,9 @@ To make this request, your API credential must have one of the following [roles]
 * Management API—Webhooks read and write
 
 ```ruby
-def get_companies_company_id_webhooks(company_id,
-                                      page_number: nil,
-                                      page_size: nil)
+def list_company_webhooks(company_id,
+                          page_number: nil,
+                          page_size: nil)
 ```
 
 ## Parameters
@@ -55,7 +55,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = webhooks_company_level_api.get_companies_company_id_webhooks(company_id)
+result = webhooks_company_level_api.list_company_webhooks(company_id)
 
 if result.success?
   puts result.data
@@ -193,7 +193,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Webhooks
+# Create Company Webhook
 
 Subscribe to receive webhook notifications about events related to your company account. You can add basic authentication to make sure the data is secure.
 
@@ -202,8 +202,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Webhooks read and write
 
 ```ruby
-def post_companies_company_id_webhooks(company_id,
-                                       body: nil)
+def create_company_webhook(company_id,
+                           body: nil)
 ```
 
 ## Parameters
@@ -243,7 +243,7 @@ body = CreateCompanyWebhookRequest.new(
   username: 'YOUR_USER'
 )
 
-result = webhooks_company_level_api.post_companies_company_id_webhooks(
+result = webhooks_company_level_api.create_company_webhook(
   company_id,
   body: body
 )
@@ -371,7 +371,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Delete-Companies-Company Id-Webhooks-Webhook Id
+# Delete Company Webhook
 
 Remove the configuration for the webhook identified in the path.
 
@@ -380,8 +380,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Webhooks read and write
 
 ```ruby
-def delete_companies_company_id_webhooks_webhook_id(company_id,
-                                                    webhook_id)
+def delete_company_webhook(company_id,
+                           webhook_id)
 ```
 
 ## Parameters
@@ -406,7 +406,7 @@ company_id = 'companyId0'
 
 webhook_id = 'webhookId6'
 
-result = webhooks_company_level_api.delete_companies_company_id_webhooks_webhook_id(
+result = webhooks_company_level_api.delete_company_webhook(
   company_id,
   webhook_id
 )
@@ -429,7 +429,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Webhooks-Webhook Id
+# Get Company Webhook
 
 Returns the configuration for the webhook identified in the path.
 
@@ -439,8 +439,8 @@ To make this request, your API credential must have one of the following [roles]
 * Management API—Webhooks read and write
 
 ```ruby
-def get_companies_company_id_webhooks_webhook_id(company_id,
-                                                 webhook_id)
+def get_company_webhook(company_id,
+                        webhook_id)
 ```
 
 ## Parameters
@@ -465,7 +465,7 @@ company_id = 'companyId0'
 
 webhook_id = 'webhookId6'
 
-result = webhooks_company_level_api.get_companies_company_id_webhooks_webhook_id(
+result = webhooks_company_level_api.get_company_webhook(
   company_id,
   webhook_id
 )
@@ -589,7 +589,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Companies-Company Id-Webhooks-Webhook Id
+# Update Company Webhook
 
 Make changes to the configuration of the webhook identified in the path. The request contains the new values you want to have in the webhook configuration. The response contains the full configuration for the webhook, which includes the new values from the request.
 
@@ -598,9 +598,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Webhooks read and write
 
 ```ruby
-def patch_companies_company_id_webhooks_webhook_id(company_id,
-                                                   webhook_id,
-                                                   body: nil)
+def update_company_webhook(company_id,
+                           webhook_id,
+                           body: nil)
 ```
 
 ## Parameters
@@ -630,7 +630,7 @@ body = UpdateCompanyWebhookRequest.new(
   active: true
 )
 
-result = webhooks_company_level_api.patch_companies_company_id_webhooks_webhook_id(
+result = webhooks_company_level_api.update_company_webhook(
   company_id,
   webhook_id,
   body: body
@@ -755,7 +755,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Webhooks-Webhook Id-Generate Hmac
+# Generate Company Webhook Hmac
 
 Returns an [HMAC key](https://en.wikipedia.org/wiki/HMAC) for the webhook identified in the path. This key allows you to check the integrity and the origin of the notifications you receive.By creating an HMAC key, you start receiving [HMAC-signed notifications](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures#enable-hmac-signatures) from Adyen. Find out more about how to [verify HMAC signatures](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures).
 
@@ -764,8 +764,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Webhooks read and write
 
 ```ruby
-def post_companies_company_id_webhooks_webhook_id_generate_hmac(company_id,
-                                                                webhook_id)
+def generate_company_webhook_hmac(company_id,
+                                  webhook_id)
 ```
 
 ## Parameters
@@ -790,7 +790,7 @@ company_id = 'companyId0'
 
 webhook_id = 'webhookId6'
 
-result = webhooks_company_level_api.post_companies_company_id_webhooks_webhook_id_generate_hmac(
+result = webhooks_company_level_api.generate_company_webhook_hmac(
   company_id,
   webhook_id
 )
@@ -821,7 +821,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Webhooks-Webhook Id-Test
+# Test Company Webhook
 
 Sends sample notifications to test if the webhook is set up correctly.
 
@@ -836,9 +836,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Webhooks read and write
 
 ```ruby
-def post_companies_company_id_webhooks_webhook_id_test(company_id,
-                                                       webhook_id,
-                                                       body: nil)
+def test_company_webhook(company_id,
+                         webhook_id,
+                         body: nil)
 ```
 
 ## Parameters
@@ -873,7 +873,7 @@ body = TestCompanyWebhookRequest.new(
   ]
 )
 
-result = webhooks_company_level_api.post_companies_company_id_webhooks_webhook_id_test(
+result = webhooks_company_level_api.test_company_webhook(
   company_id,
   webhook_id,
   body: body

@@ -10,12 +10,12 @@ account_companylevel_api = client.account_companylevel
 
 ## Methods
 
-* [Get-Companies](../../doc/controllers/account-companylevel.md#get-companies)
-* [Get-Companies-Company Id](../../doc/controllers/account-companylevel.md#get-companies-company-id)
-* [Get-Companies-Company Id-Merchants](../../doc/controllers/account-companylevel.md#get-companies-company-id-merchants)
+* [List Companies](../../doc/controllers/account-companylevel.md#list-companies)
+* [Get Company](../../doc/controllers/account-companylevel.md#get-company)
+* [List Company Merchants](../../doc/controllers/account-companylevel.md#list-company-merchants)
 
 
-# Get-Companies
+# List Companies
 
 Returns the list of company accounts that your API credential has access to. The list is grouped into pages as defined by the query parameters.
 
@@ -24,8 +24,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Account read
 
 ```ruby
-def get_companies(page_number: nil,
-                  page_size: nil)
+def list_companies(page_number: nil,
+                   page_size: nil)
 ```
 
 ## Parameters
@@ -46,7 +46,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ## Example Usage
 
 ```ruby
-result = account_company_level_api.get_companies
+result = account_company_level_api.list_companies
 
 if result.success?
   puts result.data
@@ -113,7 +113,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id
+# Get Company
 
 Returns the company account specified in the path. Your API credential must have access to the company account.
 
@@ -122,7 +122,7 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Account read
 
 ```ruby
-def get_companies_company_id(company_id)
+def get_company(company_id)
 ```
 
 ## Parameters
@@ -144,7 +144,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = account_company_level_api.get_companies_company_id(company_id)
+result = account_company_level_api.get_company(company_id)
 
 if result.success?
   puts result.data
@@ -194,7 +194,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Merchants
+# List Company Merchants
 
 Returns the list of merchant accounts under the company account specified in the path. The list only includes merchant accounts that your API credential has access to. The list is grouped into pages as defined by the query parameters.
 
@@ -203,9 +203,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Account read
 
 ```ruby
-def get_companies_company_id_merchants(company_id,
-                                       page_number: nil,
-                                       page_size: nil)
+def list_company_merchants(company_id,
+                           page_number: nil,
+                           page_size: nil)
 ```
 
 ## Parameters
@@ -229,7 +229,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 company_id = 'companyId0'
 
-result = account_company_level_api.get_companies_company_id_merchants(company_id)
+result = account_company_level_api.list_company_merchants(company_id)
 
 if result.success?
   puts result.data

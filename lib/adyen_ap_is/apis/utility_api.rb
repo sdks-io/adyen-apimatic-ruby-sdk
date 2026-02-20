@@ -17,8 +17,8 @@ module AdyenApIs
     # @param [ApplePaySessionRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_apple_pay_sessions(idempotency_key: nil,
-                                body: nil)
+    def get_apple_pay_session(idempotency_key: nil,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/applePay/sessions',
@@ -49,9 +49,9 @@ module AdyenApIs
     # @param [UtilityRequest] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_origin_keys(idempotency_key: nil,
-                         body: nil)
-      warn 'Endpoint post_origin_keys in UtilityApi is deprecated'
+    def generate_origin_keys(idempotency_key: nil,
+                             body: nil)
+      warn 'Endpoint generate_origin_keys in UtilityApi is deprecated'
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/originKeys',
@@ -93,8 +93,8 @@ module AdyenApIs
     # @param [PaypalUpdateOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_paypal_update_order(idempotency_key: nil,
-                                 body: nil)
+    def update_pay_pal_order(idempotency_key: nil,
+                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/paypal/updateOrder',
@@ -132,7 +132,7 @@ module AdyenApIs
     # @param [ValidateShopperIdRequest] body Required parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_validate_shopper_id(body)
+    def validate_shopper_id(body)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/validateShopperId',

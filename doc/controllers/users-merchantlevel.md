@@ -10,13 +10,13 @@ users_merchantlevel_api = client.users_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Users](../../doc/controllers/users-merchantlevel.md#get-merchants-merchant-id-users)
-* [Post-Merchants-Merchant Id-Users](../../doc/controllers/users-merchantlevel.md#post-merchants-merchant-id-users)
-* [Get-Merchants-Merchant Id-Users-User Id](../../doc/controllers/users-merchantlevel.md#get-merchants-merchant-id-users-user-id)
-* [Patch-Merchants-Merchant Id-Users-User Id](../../doc/controllers/users-merchantlevel.md#patch-merchants-merchant-id-users-user-id)
+* [List Merchant Users](../../doc/controllers/users-merchantlevel.md#list-merchant-users)
+* [Create Merchant User](../../doc/controllers/users-merchantlevel.md#create-merchant-user)
+* [Get Merchant User](../../doc/controllers/users-merchantlevel.md#get-merchant-user)
+* [Update Merchant User](../../doc/controllers/users-merchantlevel.md#update-merchant-user)
 
 
-# Get-Merchants-Merchant Id-Users
+# List Merchant Users
 
 Returns a list of users associated with the `merchantId` specified in the path.
 
@@ -25,10 +25,10 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def get_merchants_merchant_id_users(merchant_id,
-                                    page_number: nil,
-                                    page_size: nil,
-                                    username: nil)
+def list_merchant_users(merchant_id,
+                        page_number: nil,
+                        page_size: nil,
+                        username: nil)
 ```
 
 ## Parameters
@@ -53,7 +53,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = users_merchant_level_api.get_merchants_merchant_id_users(merchant_id)
+result = users_merchant_level_api.list_merchant_users(merchant_id)
 
 if result.success?
   puts result.data
@@ -73,7 +73,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Users
+# Create Merchant User
 
 Creates a user for the `merchantId` specified in the path.
 
@@ -82,8 +82,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def post_merchants_merchant_id_users(merchant_id,
-                                     body: nil)
+def create_merchant_user(merchant_id,
+                         body: nil)
 ```
 
 ## Parameters
@@ -120,7 +120,7 @@ body = CreateMerchantUserRequest.new(
   time_zone_code: 'Europe/Amsterdam'
 )
 
-result = users_merchant_level_api.post_merchants_merchant_id_users(
+result = users_merchant_level_api.create_merchant_user(
   merchant_id,
   body: body
 )
@@ -167,7 +167,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Users-User Id
+# Get Merchant User
 
 Returns user details for the `userId` and the `merchantId` specified in the path.
 
@@ -176,8 +176,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def get_merchants_merchant_id_users_user_id(merchant_id,
-                                            user_id)
+def get_merchant_user(merchant_id,
+                      user_id)
 ```
 
 ## Parameters
@@ -202,7 +202,7 @@ merchant_id = 'merchantId6'
 
 user_id = 'userId0'
 
-result = users_merchant_level_api.get_merchants_merchant_id_users_user_id(
+result = users_merchant_level_api.get_merchant_user(
   merchant_id,
   user_id
 )
@@ -225,7 +225,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Users-User Id
+# Update Merchant User
 
 Updates user details for the `userId` and the `merchantId` specified in the path.
 
@@ -234,9 +234,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Users read and write
 
 ```ruby
-def patch_merchants_merchant_id_users_user_id(merchant_id,
-                                              user_id,
-                                              body: nil)
+def update_merchant_user(merchant_id,
+                         user_id,
+                         body: nil)
 ```
 
 ## Parameters
@@ -262,7 +262,7 @@ merchant_id = 'merchantId6'
 
 user_id = 'userId0'
 
-result = users_merchant_level_api.patch_merchants_merchant_id_users_user_id(
+result = users_merchant_level_api.update_merchant_user(
   merchant_id,
   user_id
 )

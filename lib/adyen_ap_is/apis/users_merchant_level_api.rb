@@ -22,10 +22,10 @@ module AdyenApIs
     # @param [String] username Optional parameter: The partial or complete
     # username to select all users that match.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_users(merchant_id,
-                                        page_number: nil,
-                                        page_size: nil,
-                                        username: nil)
+    def list_merchant_users(merchant_id,
+                            page_number: nil,
+                            page_size: nil,
+                            username: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/users',
@@ -71,8 +71,8 @@ module AdyenApIs
     # @param [CreateMerchantUserRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_users(merchant_id,
-                                         body: nil)
+    def create_merchant_user(merchant_id,
+                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/users',
@@ -119,8 +119,8 @@ module AdyenApIs
     # @param [String] user_id Required parameter: Unique identifier of the
     # user.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_users_user_id(merchant_id,
-                                                user_id)
+    def get_merchant_user(merchant_id,
+                          user_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/users/{userId}',
@@ -169,9 +169,9 @@ module AdyenApIs
     # @param [UpdateMerchantUserRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_users_user_id(merchant_id,
-                                                  user_id,
-                                                  body: nil)
+    def update_merchant_user(merchant_id,
+                             user_id,
+                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/users/{userId}',

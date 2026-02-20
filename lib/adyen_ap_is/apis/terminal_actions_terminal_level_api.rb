@@ -30,7 +30,7 @@ module AdyenApIs
     # @param [ScheduleTerminalActionsRequest] body Optional parameter: TODO:
     # type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_terminals_schedule_actions(body: nil)
+    def schedule_terminal_actions(body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/terminals/scheduleActions',

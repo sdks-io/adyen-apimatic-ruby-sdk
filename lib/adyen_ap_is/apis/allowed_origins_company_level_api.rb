@@ -18,8 +18,8 @@ module AdyenApIs
     # @param [String] api_credential_id Required parameter: Unique identifier of
     # the API credential.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_api_credentials_api_credential_id_allowed_origins(company_id,
-                                                                                   api_credential_id)
+    def list_company_api_credential_origins(company_id,
+                                            api_credential_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}/allowedOrigins',
@@ -69,9 +69,9 @@ module AdyenApIs
     # @param [AllowedOrigin] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_api_credentials_api_credential_id_allowed_origins(company_id,
-                                                                                    api_credential_id,
-                                                                                    body: nil)
+    def create_company_api_credential_origin(company_id,
+                                             api_credential_id,
+                                             body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}/allowedOrigins',
@@ -126,9 +126,9 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(company_id,
-                                                                                                api_credential_id,
-                                                                                                origin_id)
+    def delete_company_api_credential_origin(company_id,
+                                             api_credential_id,
+                                             origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}/allowedOrigins/{originId}',
@@ -179,9 +179,9 @@ module AdyenApIs
     # @param [String] origin_id Required parameter: Unique identifier of the
     # allowed origin.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(company_id,
-                                                                                             api_credential_id,
-                                                                                             origin_id)
+    def get_company_api_credential_origin(company_id,
+                                          api_credential_id,
+                                          origin_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/apiCredentials/{apiCredentialId}/allowedOrigins/{originId}',

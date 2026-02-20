@@ -98,16 +98,16 @@ Have a look at the [release notes](https://docs.adyen.com/release-notes/manageme
 Install the gem from the command line:
 
 ```bash
-gem install adyen-apimatic-sdk -v 1.0.0
+gem install adyen-apimatic-sdk -v 1.0.1
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'adyen-apimatic-sdk', '1.0.0'
+gem 'adyen-apimatic-sdk', '1.0.1'
 ```
 
-For additional gem details, see the [RubyGems page for the adyen-apimatic-sdk gem](https://rubygems.org/gems/adyen-apimatic-sdk/versions/1.0.0).
+For additional gem details, see the [RubyGems page for the adyen-apimatic-sdk gem](https://rubygems.org/gems/adyen-apimatic-sdk/versions/1.0.1).
 
 ## IRB Console Usage
 
@@ -146,13 +146,13 @@ ruby bin/console
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| environment | [`Environment`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
+| environment | [`Environment`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | connection | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | adapter | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | timeout | `Float` | The value to use for connection timeout. <br> **Default: 30** |
@@ -162,10 +162,10 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| proxy_settings | [`ProxySettings`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| logging_configuration | [`LoggingConfiguration`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| api_key_auth_credentials | [`ApiKeyAuthCredentials`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
-| basic_auth_credentials | [`BasicAuthCredentials`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
+| proxy_settings | [`ProxySettings`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| logging_configuration | [`LoggingConfiguration`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| api_key_auth_credentials | [`ApiKeyAuthCredentials`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
+| basic_auth_credentials | [`BasicAuthCredentials`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
 
 The API client can be initialized as follows:
 
@@ -206,7 +206,7 @@ include AdyenApIs
 client = Client.from_env
 ```
 
-See the [`Environment-Based Client Initialization`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/environment-based-client-initialization.md) section for details.
+See the [`Environment-Based Client Initialization`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/environment-based-client-initialization.md) section for details.
 
 ## Environments
 
@@ -222,67 +222,67 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`ApiKeyAuth (Custom Header Signature)`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/auth/custom-header-signature.md)
-* [`BasicAuth (Basic Authentication)`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/auth/basic-authentication.md)
+* [`ApiKeyAuth (Custom Header Signature)`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/auth/custom-header-signature.md)
+* [`BasicAuth (Basic Authentication)`](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/auth/basic-authentication.md)
 
 ## List of APIs
 
-* [Paymentlinks](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/paymentlinks.md)
-* [Account-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/account-companylevel.md)
-* [Account-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/account-merchantlevel.md)
-* [Account-Storelevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/account-storelevel.md)
-* [Payoutsettings-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/payoutsettings-merchantlevel.md)
-* [Users-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/users-companylevel.md)
-* [Users-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/users-merchantlevel.md)
-* [My AP Icredential](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/my-ap-icredential.md)
-* [AP Icredentials-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/ap-icredentials-companylevel.md)
-* [AP Icredentials-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/ap-icredentials-merchantlevel.md)
-* [AP Ikey-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/ap-ikey-companylevel.md)
-* [AP Ikey-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/ap-ikey-merchantlevel.md)
-* [Clientkey-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/clientkey-companylevel.md)
-* [Clientkey-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/clientkey-merchantlevel.md)
-* [Allowedorigins-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/allowedorigins-companylevel.md)
-* [Allowedorigins-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/allowedorigins-merchantlevel.md)
-* [Webhooks-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/webhooks-companylevel.md)
-* [Webhooks-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/webhooks-merchantlevel.md)
-* [Paymentmethods-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/paymentmethods-merchantlevel.md)
-* [Terminals-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminals-terminallevel.md)
-* [Terminalactions-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalactions-companylevel.md)
-* [Terminalactions-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalactions-terminallevel.md)
-* [Terminalorders-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalorders-companylevel.md)
-* [Terminalorders-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalorders-merchantlevel.md)
-* [Terminalsettings-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalsettings-companylevel.md)
-* [Terminalsettings-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalsettings-merchantlevel.md)
-* [Terminalsettings-Storelevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalsettings-storelevel.md)
-* [Terminalsettings-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/terminalsettings-terminallevel.md)
-* [Androidfiles-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/androidfiles-companylevel.md)
-* [Splitconfiguration-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/splitconfiguration-merchantlevel.md)
-* [Payments](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/payments.md)
-* [Donations](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/donations.md)
-* [Modifications](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/modifications.md)
-* [Recurring](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/recurring.md)
-* [Orders](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/orders.md)
-* [Utility](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/controllers/utility.md)
+* [Paymentlinks](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/paymentlinks.md)
+* [Account-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/account-companylevel.md)
+* [Account-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/account-merchantlevel.md)
+* [Account-Storelevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/account-storelevel.md)
+* [Payoutsettings-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/payoutsettings-merchantlevel.md)
+* [Users-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/users-companylevel.md)
+* [Users-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/users-merchantlevel.md)
+* [My AP Icredential](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/my-ap-icredential.md)
+* [AP Icredentials-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/ap-icredentials-companylevel.md)
+* [AP Icredentials-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/ap-icredentials-merchantlevel.md)
+* [AP Ikey-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/ap-ikey-companylevel.md)
+* [AP Ikey-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/ap-ikey-merchantlevel.md)
+* [Clientkey-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/clientkey-companylevel.md)
+* [Clientkey-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/clientkey-merchantlevel.md)
+* [Allowedorigins-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/allowedorigins-companylevel.md)
+* [Allowedorigins-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/allowedorigins-merchantlevel.md)
+* [Webhooks-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/webhooks-companylevel.md)
+* [Webhooks-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/webhooks-merchantlevel.md)
+* [Paymentmethods-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/paymentmethods-merchantlevel.md)
+* [Terminals-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminals-terminallevel.md)
+* [Terminalactions-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalactions-companylevel.md)
+* [Terminalactions-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalactions-terminallevel.md)
+* [Terminalorders-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalorders-companylevel.md)
+* [Terminalorders-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalorders-merchantlevel.md)
+* [Terminalsettings-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalsettings-companylevel.md)
+* [Terminalsettings-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalsettings-merchantlevel.md)
+* [Terminalsettings-Storelevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalsettings-storelevel.md)
+* [Terminalsettings-Terminallevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/terminalsettings-terminallevel.md)
+* [Androidfiles-Companylevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/androidfiles-companylevel.md)
+* [Splitconfiguration-Merchantlevel](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/splitconfiguration-merchantlevel.md)
+* [Payments](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/payments.md)
+* [Donations](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/donations.md)
+* [Modifications](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/modifications.md)
+* [Recurring](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/recurring.md)
+* [Orders](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/orders.md)
+* [Utility](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/controllers/utility.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/environment-based-client-initialization.md)
-* [AbstractLogger](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/abstract-logger.md)
-* [LoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/response-logging-configuration.md)
+* [ProxySettings](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/environment-based-client-initialization.md)
+* [AbstractLogger](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/abstract-logger.md)
+* [LoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/response-logging-configuration.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/http-response.md)
-* [HttpRequest](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/http-request.md)
+* [HttpResponse](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/http-response.md)
+* [HttpRequest](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/api-response.md)
-* [ApiHelper](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/api-helper.md)
-* [DateTimeHelper](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.0/doc/date-time-helper.md)
+* [ApiResponse](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/api-response.md)
+* [ApiHelper](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/api-helper.md)
+* [DateTimeHelper](https://www.github.com/sdks-io/adyen-apimatic-ruby-sdk/tree/1.0.1/doc/date-time-helper.md)
 

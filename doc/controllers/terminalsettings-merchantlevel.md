@@ -10,13 +10,13 @@ terminalsettings_merchantlevel_api = client.terminalsettings_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Terminal Logos](../../doc/controllers/terminalsettings-merchantlevel.md#get-merchants-merchant-id-terminal-logos)
-* [Patch-Merchants-Merchant Id-Terminal Logos](../../doc/controllers/terminalsettings-merchantlevel.md#patch-merchants-merchant-id-terminal-logos)
-* [Get-Merchants-Merchant Id-Terminal Settings](../../doc/controllers/terminalsettings-merchantlevel.md#get-merchants-merchant-id-terminal-settings)
-* [Patch-Merchants-Merchant Id-Terminal Settings](../../doc/controllers/terminalsettings-merchantlevel.md#patch-merchants-merchant-id-terminal-settings)
+* [Get Merchant Terminal Logo](../../doc/controllers/terminalsettings-merchantlevel.md#get-merchant-terminal-logo)
+* [Update Merchant Terminal Logo](../../doc/controllers/terminalsettings-merchantlevel.md#update-merchant-terminal-logo)
+* [Get Merchant Terminal Settings](../../doc/controllers/terminalsettings-merchantlevel.md#get-merchant-terminal-settings)
+* [Update Merchant Terminal Settings](../../doc/controllers/terminalsettings-merchantlevel.md#update-merchant-terminal-settings)
 
 
-# Get-Merchants-Merchant Id-Terminal Logos
+# Get Merchant Terminal Logo
 
 Returns the logo that is configured for a specific payment terminal model at the merchant account identified in the path.
 The logo is returned as a Base64-encoded string. You need to Base64-decode the string to get the actual image file.
@@ -30,8 +30,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_logos(merchant_id,
-                                             model)
+def get_merchant_terminal_logo(merchant_id,
+                               model)
 ```
 
 ## Parameters
@@ -56,7 +56,7 @@ merchant_id = 'merchantId6'
 
 model = 'model2'
 
-result = terminal_settings_merchant_level_api.get_merchants_merchant_id_terminal_logos(
+result = terminal_settings_merchant_level_api.get_merchant_terminal_logo(
   merchant_id,
   model
 )
@@ -87,7 +87,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Terminal Logos
+# Update Merchant Terminal Logo
 
 Updates the logo for a specific payment terminal model at the merchant account identified in the path. You can update the logo for only one terminal model at a time.
 This logo applies to all terminals of the specified model under the merchant account, unless a different logo is configured at a lower level (store or individual terminal).
@@ -102,9 +102,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_terminal_logos(merchant_id,
-                                               model,
-                                               body: nil)
+def update_merchant_terminal_logo(merchant_id,
+                                  model,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -134,7 +134,7 @@ body = Logo.new(
   data: ''
 )
 
-result = terminal_settings_merchant_level_api.patch_merchants_merchant_id_terminal_logos(
+result = terminal_settings_merchant_level_api.update_merchant_terminal_logo(
   merchant_id,
   model,
   body: body
@@ -166,7 +166,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Terminal Settings
+# Get Merchant Terminal Settings
 
 Returns the payment terminal settings that are configured for the merchant account identified in the path. These settings apply to all terminals under the merchant account unless different values are configured at a lower level (store or individual terminal).
 
@@ -182,7 +182,7 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_settings(merchant_id)
+def get_merchant_terminal_settings(merchant_id)
 ```
 
 ## Parameters
@@ -204,7 +204,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = terminal_settings_merchant_level_api.get_merchants_merchant_id_terminal_settings(merchant_id)
+result = terminal_settings_merchant_level_api.get_merchant_terminal_settings(merchant_id)
 
 if result.success?
   puts result.data
@@ -321,7 +321,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Terminal Settings
+# Update Merchant Terminal Settings
 
 Updates payment terminal settings for the merchant account identified in the path.
 These settings apply to all terminals under the merchant account, unless different values are configured at a lower level (store or individual terminal).
@@ -341,8 +341,8 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_terminal_settings(merchant_id,
-                                                  body: nil)
+def update_merchant_terminal_settings(merchant_id,
+                                      body: nil)
 ```
 
 ## Parameters
@@ -411,7 +411,7 @@ body = TerminalSettings.new(
   )
 )
 
-result = terminal_settings_merchant_level_api.patch_merchants_merchant_id_terminal_settings(
+result = terminal_settings_merchant_level_api.update_merchant_terminal_settings(
   merchant_id,
   body: body
 )

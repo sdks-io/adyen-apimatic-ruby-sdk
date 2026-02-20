@@ -10,13 +10,13 @@ allowedorigins_companylevel_api = client.allowedorigins_companylevel
 
 ## Methods
 
-* [Get-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins](../../doc/controllers/allowedorigins-companylevel.md#get-companies-company-id-api-credentials-api-credential-id-allowed-origins)
-* [Post-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins](../../doc/controllers/allowedorigins-companylevel.md#post-companies-company-id-api-credentials-api-credential-id-allowed-origins)
-* [Delete-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins-Origin Id](../../doc/controllers/allowedorigins-companylevel.md#delete-companies-company-id-api-credentials-api-credential-id-allowed-origins-origin-id)
-* [Get-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins-Origin Id](../../doc/controllers/allowedorigins-companylevel.md#get-companies-company-id-api-credentials-api-credential-id-allowed-origins-origin-id)
+* [List Company Api Credential Origins](../../doc/controllers/allowedorigins-companylevel.md#list-company-api-credential-origins)
+* [Create Company Api Credential Origin](../../doc/controllers/allowedorigins-companylevel.md#create-company-api-credential-origin)
+* [Delete Company Api Credential Origin](../../doc/controllers/allowedorigins-companylevel.md#delete-company-api-credential-origin)
+* [Get Company Api Credential Origin](../../doc/controllers/allowedorigins-companylevel.md#get-company-api-credential-origin)
 
 
-# Get-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins
+# List Company Api Credential Origins
 
 Returns the list of [allowed origins](https://docs.adyen.com/development-resources/client-side-authentication#allowed-origins) for the API credential identified in the path.
 
@@ -25,8 +25,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def get_companies_company_id_api_credentials_api_credential_id_allowed_origins(company_id,
-                                                                               api_credential_id)
+def list_company_api_credential_origins(company_id,
+                                        api_credential_id)
 ```
 
 ## Parameters
@@ -51,7 +51,7 @@ company_id = 'companyId0'
 
 api_credential_id = 'apiCredentialId8'
 
-result = allowed_origins_company_level_api.get_companies_company_id_api_credentials_api_credential_id_allowed_origins(
+result = allowed_origins_company_level_api.list_company_api_credential_origins(
   company_id,
   api_credential_id
 )
@@ -101,7 +101,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins
+# Create Company Api Credential Origin
 
 Adds a new [allowed origin](https://docs.adyen.com/development-resources/client-side-authentication#allowed-origins) to the API credential's list of allowed origins.
 
@@ -110,9 +110,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def post_companies_company_id_api_credentials_api_credential_id_allowed_origins(company_id,
-                                                                                api_credential_id,
-                                                                                body: nil)
+def create_company_api_credential_origin(company_id,
+                                         api_credential_id,
+                                         body: nil)
 ```
 
 ## Parameters
@@ -142,7 +142,7 @@ body = AllowedOrigin.new(
   domain: 'https://www.eu.mystore.com'
 )
 
-result = allowed_origins_company_level_api.post_companies_company_id_api_credentials_api_credential_id_allowed_origins(
+result = allowed_origins_company_level_api.create_company_api_credential_origin(
   company_id,
   api_credential_id,
   body: body
@@ -180,7 +180,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Delete-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins-Origin Id
+# Delete Company Api Credential Origin
 
 Removes the [allowed origin](https://docs.adyen.com/development-resources/client-side-authentication#allowed-origins) identified in the path. As soon as an allowed origin is removed, we no longer accept client-side requests from that domain.
 
@@ -189,9 +189,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def delete_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(company_id,
-                                                                                            api_credential_id,
-                                                                                            origin_id)
+def delete_company_api_credential_origin(company_id,
+                                         api_credential_id,
+                                         origin_id)
 ```
 
 ## Parameters
@@ -219,7 +219,7 @@ api_credential_id = 'apiCredentialId8'
 
 origin_id = 'originId6'
 
-result = allowed_origins_company_level_api.delete_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(
+result = allowed_origins_company_level_api.delete_company_api_credential_origin(
   company_id,
   api_credential_id,
   origin_id
@@ -243,7 +243,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Companies-Company Id-Api Credentials-Api Credential Id-Allowed Origins-Origin Id
+# Get Company Api Credential Origin
 
 Returns the [allowed origin](https://docs.adyen.com/development-resources/client-side-authentication#allowed-origins) identified in the path.
 
@@ -252,9 +252,9 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def get_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(company_id,
-                                                                                         api_credential_id,
-                                                                                         origin_id)
+def get_company_api_credential_origin(company_id,
+                                      api_credential_id,
+                                      origin_id)
 ```
 
 ## Parameters
@@ -282,7 +282,7 @@ api_credential_id = 'apiCredentialId8'
 
 origin_id = 'originId6'
 
-result = allowed_origins_company_level_api.get_companies_company_id_api_credentials_api_credential_id_allowed_origins_origin_id(
+result = allowed_origins_company_level_api.get_company_api_credential_origin(
   company_id,
   api_credential_id,
   origin_id

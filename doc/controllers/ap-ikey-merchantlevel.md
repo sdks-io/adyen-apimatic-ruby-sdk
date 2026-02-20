@@ -9,7 +9,7 @@ ap_ikey_merchantlevel_api = client.ap_ikey_merchantlevel
 `ApIkeyMerchantlevelApi`
 
 
-# Post-Merchants-Merchant Id-Api Credentials-Api Credential Id-Generate Api Key
+# Generate Merchant Api Key
 
 Returns a new API key for the API credential. You can use the new API key a few minutes after generating it. The old API key stops working 24 hours after generating a new one.
 
@@ -18,8 +18,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def post_merchants_merchant_id_api_credentials_api_credential_id_generate_api_key(merchant_id,
-                                                                                  api_credential_id)
+def generate_merchant_api_key(merchant_id,
+                              api_credential_id)
 ```
 
 ## Parameters
@@ -44,7 +44,7 @@ merchant_id = 'merchantId6'
 
 api_credential_id = 'apiCredentialId8'
 
-result = api_key_merchant_level_api.post_merchants_merchant_id_api_credentials_api_credential_id_generate_api_key(
+result = api_key_merchant_level_api.generate_merchant_api_key(
   merchant_id,
   api_credential_id
 )

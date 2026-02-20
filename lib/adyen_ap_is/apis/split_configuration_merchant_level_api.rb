@@ -14,7 +14,7 @@ module AdyenApIs
     # @param [String] merchant_id Required parameter: The unique identifier of
     # the merchant account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_split_configurations(merchant_id)
+    def list_split_configurations(merchant_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/splitConfigurations',
@@ -67,8 +67,8 @@ module AdyenApIs
     # @param [SplitConfiguration] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_split_configurations(merchant_id,
-                                                        body: nil)
+    def create_split_configuration(merchant_id,
+                                   body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/splitConfigurations',
@@ -114,8 +114,8 @@ module AdyenApIs
     # @param [String] split_configuration_id Required parameter: The unique
     # identifier of the split configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                                 split_configuration_id)
+    def delete_split_configuration(merchant_id,
+                                   split_configuration_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}',
@@ -162,8 +162,8 @@ module AdyenApIs
     # @param [String] split_configuration_id Required parameter: The unique
     # identifier of the split configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                              split_configuration_id)
+    def get_split_configuration(merchant_id,
+                                split_configuration_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}',
@@ -212,9 +212,9 @@ module AdyenApIs
     # @param [UpdateSplitConfigurationRequest] body Optional parameter: TODO:
     # type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                                split_configuration_id,
-                                                                                body: nil)
+    def update_split_configuration(merchant_id,
+                                   split_configuration_id,
+                                   body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}',
@@ -268,9 +268,9 @@ module AdyenApIs
     # @param [SplitConfigurationRule] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_split_configurations_split_configuration_id(merchant_id,
-                                                                               split_configuration_id,
-                                                                               body: nil)
+    def create_split_configuration_rule(merchant_id,
+                                        split_configuration_id,
+                                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}',
@@ -320,9 +320,9 @@ module AdyenApIs
     # identifier of the split configuration.
     # @param [String] rule_id Required parameter: TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(merchant_id,
-                                                                                               split_configuration_id,
-                                                                                               rule_id)
+    def delete_split_configuration_rule(merchant_id,
+                                        split_configuration_id,
+                                        rule_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}/rules/{ruleId}',
@@ -377,10 +377,10 @@ module AdyenApIs
     # @param [UpdateSplitConfigurationRuleRequest] body Optional parameter:
     # TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id(merchant_id,
-                                                                                              split_configuration_id,
-                                                                                              rule_id,
-                                                                                              body: nil)
+    def update_split_configuration_rule(merchant_id,
+                                        split_configuration_id,
+                                        rule_id,
+                                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}/rules/{ruleId}',
@@ -440,11 +440,11 @@ module AdyenApIs
     # @param [UpdateSplitConfigurationLogicRequest] body Optional parameter:
     # TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_split_configurations_split_configuration_id_rules_rule_id_split_logic_split_logic_id(merchant_id,
-                                                                                                                         split_configuration_id,
-                                                                                                                         rule_id,
-                                                                                                                         split_logic_id,
-                                                                                                                         body: nil)
+    def update_split_logic(merchant_id,
+                           split_configuration_id,
+                           rule_id,
+                           split_logic_id,
+                           body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/splitConfigurations/{splitConfigurationId}/rules/{ruleId}/splitLogic/{splitLogicId}',

@@ -22,9 +22,9 @@ module AdyenApIs
     # @param [Integer] page_size Optional parameter: The number of items to have
     # on a page, maximum 100. The default is 10 items on a page.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_webhooks(merchant_id,
-                                           page_number: nil,
-                                           page_size: nil)
+    def list_merchant_webhooks(merchant_id,
+                               page_number: nil,
+                               page_size: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/webhooks',
@@ -71,8 +71,8 @@ module AdyenApIs
     # @param [CreateMerchantWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_webhooks(merchant_id,
-                                            body: nil)
+    def create_merchant_webhook(merchant_id,
+                                body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/webhooks',
@@ -118,8 +118,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: Unique identifier of the
     # webhook configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_merchants_merchant_id_webhooks_webhook_id(merchant_id,
-                                                         webhook_id)
+    def delete_merchant_webhook(merchant_id,
+                                webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/merchants/{merchantId}/webhooks/{webhookId}',
@@ -164,8 +164,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: Unique identifier of the
     # webhook configuration.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_merchants_merchant_id_webhooks_webhook_id(merchant_id,
-                                                      webhook_id)
+    def get_merchant_webhook(merchant_id,
+                             webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/merchants/{merchantId}/webhooks/{webhookId}',
@@ -216,9 +216,9 @@ module AdyenApIs
     # @param [UpdateMerchantWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_merchants_merchant_id_webhooks_webhook_id(merchant_id,
-                                                        webhook_id,
-                                                        body: nil)
+    def update_merchant_webhook(merchant_id,
+                                webhook_id,
+                                body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/merchants/{merchantId}/webhooks/{webhookId}',
@@ -275,8 +275,8 @@ module AdyenApIs
     # @param [String] webhook_id Required parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_webhooks_webhook_id_generate_hmac(merchant_id,
-                                                                     webhook_id)
+    def generate_merchant_webhook_hmac(merchant_id,
+                                       webhook_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/webhooks/{webhookId}/generateHmac',
@@ -331,9 +331,9 @@ module AdyenApIs
     # @param [TestWebhookRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_merchants_merchant_id_webhooks_webhook_id_test(merchant_id,
-                                                            webhook_id,
-                                                            body: nil)
+    def test_merchant_webhook(merchant_id,
+                              webhook_id,
+                              body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/merchants/{merchantId}/webhooks/{webhookId}/test',

@@ -18,8 +18,8 @@ module AdyenApIs
     # @param [CheckoutForwardRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_forward(idempotency_key: nil,
-                     body: nil)
+    def forward_request(idempotency_key: nil,
+                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/forward',
@@ -48,8 +48,8 @@ module AdyenApIs
     # @param [String] merchant_account Optional parameter: Your merchant
     # account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_stored_payment_methods(shopper_reference: nil,
-                                   merchant_account: nil)
+    def list_stored_payment_methods(shopper_reference: nil,
+                                    merchant_account: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/storedPaymentMethods',
@@ -72,8 +72,8 @@ module AdyenApIs
     # @param [StoredPaymentMethodRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_stored_payment_methods(idempotency_key: nil,
-                                    body: nil)
+    def create_stored_payment_method(idempotency_key: nil,
+                                     body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/storedPaymentMethods',
@@ -102,9 +102,9 @@ module AdyenApIs
     # @param [String] merchant_account Required parameter: Your merchant
     # account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_stored_payment_methods_stored_payment_method_id(stored_payment_method_id,
-                                                               shopper_reference,
-                                                               merchant_account)
+    def delete_stored_payment_method(stored_payment_method_id,
+                                     shopper_reference,
+                                     merchant_account)
       @api_call
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/storedPaymentMethods/{storedPaymentMethodId}',

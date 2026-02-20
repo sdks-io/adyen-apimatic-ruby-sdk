@@ -33,11 +33,11 @@ module AdyenApIs
     # @param [Integer] version_code Optional parameter: The version number of
     # the app.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_android_apps(company_id,
-                                              page_number: nil,
-                                              page_size: nil,
-                                              package_name: nil,
-                                              version_code: nil)
+    def list_android_apps(company_id,
+                          page_number: nil,
+                          page_size: nil,
+                          package_name: nil,
+                          version_code: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/androidApps',
@@ -90,7 +90,7 @@ module AdyenApIs
     # @param [String] company_id Required parameter: The unique identifier of
     # the company account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_android_apps(company_id)
+    def create_android_app(company_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/androidApps',
@@ -140,8 +140,8 @@ module AdyenApIs
     # the company account.
     # @param [String] id Required parameter: The unique identifier of the app.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_android_apps_id(company_id,
-                                                 id)
+    def get_android_app(company_id,
+                        id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/androidApps/{id}',
@@ -193,8 +193,8 @@ module AdyenApIs
     # the company account.
     # @param [String] id Required parameter: The unique identifier of the app.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_android_apps_id(company_id,
-                                                   id)
+    def update_android_app(company_id,
+                           id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/androidApps/{id}',
@@ -256,10 +256,10 @@ module AdyenApIs
     # @param [String] certificate_name Optional parameter: The name of the
     # certificate.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_android_certificates(company_id,
-                                                      page_number: nil,
-                                                      page_size: nil,
-                                                      certificate_name: nil)
+    def list_android_certificates(company_id,
+                                  page_number: nil,
+                                  page_size: nil,
+                                  certificate_name: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/androidCertificates',
@@ -302,7 +302,7 @@ module AdyenApIs
     # @param [String] company_id Required parameter: The unique identifier of
     # the company account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_android_certificates(company_id)
+    def upload_android_certificate(company_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/androidCertificates',

@@ -10,13 +10,13 @@ terminalsettings_terminallevel_api = client.terminalsettings_terminallevel
 
 ## Methods
 
-* [Get-Terminals-Terminal Id-Terminal Logos](../../doc/controllers/terminalsettings-terminallevel.md#get-terminals-terminal-id-terminal-logos)
-* [Patch-Terminals-Terminal Id-Terminal Logos](../../doc/controllers/terminalsettings-terminallevel.md#patch-terminals-terminal-id-terminal-logos)
-* [Get-Terminals-Terminal Id-Terminal Settings](../../doc/controllers/terminalsettings-terminallevel.md#get-terminals-terminal-id-terminal-settings)
-* [Patch-Terminals-Terminal Id-Terminal Settings](../../doc/controllers/terminalsettings-terminallevel.md#patch-terminals-terminal-id-terminal-settings)
+* [Get Terminal Logo](../../doc/controllers/terminalsettings-terminallevel.md#get-terminal-logo)
+* [Update Terminal Logo](../../doc/controllers/terminalsettings-terminallevel.md#update-terminal-logo)
+* [Get Terminal Settings](../../doc/controllers/terminalsettings-terminallevel.md#get-terminal-settings)
+* [Update Terminal Settings](../../doc/controllers/terminalsettings-terminallevel.md#update-terminal-settings)
 
 
-# Get-Terminals-Terminal Id-Terminal Logos
+# Get Terminal Logo
 
 Returns the logo that is configured for the payment terminal identified in the path.
 The logo is returned as a Base64-encoded string. You need to Base64-decode the string to get the actual image file.
@@ -29,7 +29,7 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_terminals_terminal_id_terminal_logos(terminal_id)
+def get_terminal_logo(terminal_id)
 ```
 
 ## Parameters
@@ -51,7 +51,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 terminal_id = 'terminalId2'
 
-result = terminal_settings_terminal_level_api.get_terminals_terminal_id_terminal_logos(terminal_id)
+result = terminal_settings_terminal_level_api.get_terminal_logo(terminal_id)
 
 if result.success?
   puts result.data
@@ -79,7 +79,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Terminals-Terminal Id-Terminal Logos
+# Update Terminal Logo
 
 Updates the logo for the payment terminal identified in the path.
 
@@ -93,8 +93,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_terminals_terminal_id_terminal_logos(terminal_id,
-                                               body: nil)
+def update_terminal_logo(terminal_id,
+                         body: nil)
 ```
 
 ## Parameters
@@ -121,7 +121,7 @@ body = Logo.new(
   data: ''
 )
 
-result = terminal_settings_terminal_level_api.patch_terminals_terminal_id_terminal_logos(
+result = terminal_settings_terminal_level_api.update_terminal_logo(
   terminal_id,
   body: body
 )
@@ -152,7 +152,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Terminals-Terminal Id-Terminal Settings
+# Get Terminal Settings
 
 Returns the settings that are configured for the payment terminal identified in the path.
 
@@ -168,7 +168,7 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_terminals_terminal_id_terminal_settings(terminal_id)
+def get_terminal_settings(terminal_id)
 ```
 
 ## Parameters
@@ -190,7 +190,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 terminal_id = 'terminalId2'
 
-result = terminal_settings_terminal_level_api.get_terminals_terminal_id_terminal_settings(terminal_id)
+result = terminal_settings_terminal_level_api.get_terminal_settings(terminal_id)
 
 if result.success?
   puts result.data
@@ -339,7 +339,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Terminals-Terminal Id-Terminal Settings
+# Update Terminal Settings
 
 Updates the settings that are configured for the payment terminal identified in the path.
 
@@ -358,8 +358,8 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_terminals_terminal_id_terminal_settings(terminal_id,
-                                                  body: nil)
+def update_terminal_settings(terminal_id,
+                             body: nil)
 ```
 
 ## Parameters
@@ -428,7 +428,7 @@ body = TerminalSettings.new(
   )
 )
 
-result = terminal_settings_terminal_level_api.patch_terminals_terminal_id_terminal_settings(
+result = terminal_settings_terminal_level_api.update_terminal_settings(
   terminal_id,
   body: body
 )

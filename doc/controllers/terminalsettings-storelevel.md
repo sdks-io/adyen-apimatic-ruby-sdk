@@ -10,17 +10,17 @@ terminalsettings_storelevel_api = client.terminalsettings_storelevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Stores-Reference-Terminal Logos](../../doc/controllers/terminalsettings-storelevel.md#get-merchants-merchant-id-stores-reference-terminal-logos)
-* [Patch-Merchants-Merchant Id-Stores-Reference-Terminal Logos](../../doc/controllers/terminalsettings-storelevel.md#patch-merchants-merchant-id-stores-reference-terminal-logos)
-* [Get-Merchants-Merchant Id-Stores-Reference-Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#get-merchants-merchant-id-stores-reference-terminal-settings)
-* [Patch-Merchants-Merchant Id-Stores-Reference-Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#patch-merchants-merchant-id-stores-reference-terminal-settings)
-* [Get-Stores-Store Id-Terminal Logos](../../doc/controllers/terminalsettings-storelevel.md#get-stores-store-id-terminal-logos)
-* [Patch-Stores-Store Id-Terminal Logos](../../doc/controllers/terminalsettings-storelevel.md#patch-stores-store-id-terminal-logos)
-* [Get-Stores-Store Id-Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#get-stores-store-id-terminal-settings)
-* [Patch-Stores-Store Id-Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#patch-stores-store-id-terminal-settings)
+* [Get Merchant Store Terminal Logo by Reference](../../doc/controllers/terminalsettings-storelevel.md#get-merchant-store-terminal-logo-by-reference)
+* [Update Merchant Store Terminal Logo by Reference](../../doc/controllers/terminalsettings-storelevel.md#update-merchant-store-terminal-logo-by-reference)
+* [Get Merchant Store Terminal Settings by Reference](../../doc/controllers/terminalsettings-storelevel.md#get-merchant-store-terminal-settings-by-reference)
+* [Update Merchant Store Terminal Settings by Reference](../../doc/controllers/terminalsettings-storelevel.md#update-merchant-store-terminal-settings-by-reference)
+* [Get Store Terminal Logo](../../doc/controllers/terminalsettings-storelevel.md#get-store-terminal-logo)
+* [Update Store Terminal Logo](../../doc/controllers/terminalsettings-storelevel.md#update-store-terminal-logo)
+* [Get Store Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#get-store-terminal-settings)
+* [Update Store Terminal Settings](../../doc/controllers/terminalsettings-storelevel.md#update-store-terminal-settings)
 
 
-# Get-Merchants-Merchant Id-Stores-Reference-Terminal Logos
+# Get Merchant Store Terminal Logo by Reference
 
 Returns the logo that is configured for a specific payment terminal model at the store identified in the path.
 The logo is returned as a Base64-encoded string. You need to Base64-decode the string to get the actual image file.
@@ -34,9 +34,9 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_stores_reference_terminal_logos(merchant_id,
-                                                              reference,
-                                                              model)
+def get_merchant_store_terminal_logo_by_reference(merchant_id,
+                                                  reference,
+                                                  model)
 ```
 
 ## Parameters
@@ -64,7 +64,7 @@ reference = 'reference4'
 
 model = 'model2'
 
-result = terminal_settings_store_level_api.get_merchants_merchant_id_stores_reference_terminal_logos(
+result = terminal_settings_store_level_api.get_merchant_store_terminal_logo_by_reference(
   merchant_id,
   reference,
   model
@@ -96,7 +96,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Stores-Reference-Terminal Logos
+# Update Merchant Store Terminal Logo by Reference
 
 Updates the logo that is configured for a specific payment terminal model at the store identified in the path. You can update the logo for only one terminal model at a time.
 This logo applies to all terminals of the specified model under the store, unless a different logo is configured for an individual terminal.
@@ -111,10 +111,10 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_stores_reference_terminal_logos(merchant_id,
-                                                                reference,
-                                                                model,
-                                                                body: nil)
+def update_merchant_store_terminal_logo_by_reference(merchant_id,
+                                                     reference,
+                                                     model,
+                                                     body: nil)
 ```
 
 ## Parameters
@@ -147,7 +147,7 @@ body = Logo.new(
   data: ''
 )
 
-result = terminal_settings_store_level_api.patch_merchants_merchant_id_stores_reference_terminal_logos(
+result = terminal_settings_store_level_api.update_merchant_store_terminal_logo_by_reference(
   merchant_id,
   reference,
   model,
@@ -180,7 +180,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Stores-Reference-Terminal Settings
+# Get Merchant Store Terminal Settings by Reference
 
 Returns the payment terminal settings that are configured for the store identified in the path. These settings apply to all terminals under the store unless different values are configured for an individual terminal.
 
@@ -196,8 +196,8 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_stores_reference_terminal_settings(merchant_id,
-                                                                 reference)
+def get_merchant_store_terminal_settings_by_reference(merchant_id,
+                                                      reference)
 ```
 
 ## Parameters
@@ -222,7 +222,7 @@ merchant_id = 'merchantId6'
 
 reference = 'reference4'
 
-result = terminal_settings_store_level_api.get_merchants_merchant_id_stores_reference_terminal_settings(
+result = terminal_settings_store_level_api.get_merchant_store_terminal_settings_by_reference(
   merchant_id,
   reference
 )
@@ -340,7 +340,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Stores-Reference-Terminal Settings
+# Update Merchant Store Terminal Settings by Reference
 
 Updates payment terminal settings for the store identified in the path. These settings apply to all terminals under the store, unless different values are configured for an individual terminal.
 
@@ -359,9 +359,9 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_stores_reference_terminal_settings(merchant_id,
-                                                                   reference,
-                                                                   body: nil)
+def update_merchant_store_terminal_settings_by_reference(merchant_id,
+                                                         reference,
+                                                         body: nil)
 ```
 
 ## Parameters
@@ -431,7 +431,7 @@ body = TerminalSettings.new(
   )
 )
 
-result = terminal_settings_store_level_api.patch_merchants_merchant_id_stores_reference_terminal_settings(
+result = terminal_settings_store_level_api.update_merchant_store_terminal_settings_by_reference(
   merchant_id,
   reference,
   body: body
@@ -573,7 +573,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Stores-Store Id-Terminal Logos
+# Get Store Terminal Logo
 
 Returns the logo that is configured for a specific payment terminal model at the store identified in the path.
 The logo is returned as a Base64-encoded string. You need to Base64-decode the string to get the actual image file.
@@ -587,8 +587,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_stores_store_id_terminal_logos(store_id,
-                                       model)
+def get_store_terminal_logo(store_id,
+                            model)
 ```
 
 ## Parameters
@@ -613,7 +613,7 @@ store_id = 'storeId6'
 
 model = 'model2'
 
-result = terminal_settings_store_level_api.get_stores_store_id_terminal_logos(
+result = terminal_settings_store_level_api.get_store_terminal_logo(
   store_id,
   model
 )
@@ -644,7 +644,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Stores-Store Id-Terminal Logos
+# Update Store Terminal Logo
 
 Updates the logo that is configured for a specific payment terminal model at the store identified in the path. You can update the logo for only one terminal model at a time.
 This logo applies to all terminals of the specified model under the store, unless a different logo is configured for an individual terminal.
@@ -659,9 +659,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_stores_store_id_terminal_logos(store_id,
-                                         model,
-                                         body: nil)
+def update_store_terminal_logo(store_id,
+                               model,
+                               body: nil)
 ```
 
 ## Parameters
@@ -691,7 +691,7 @@ body = Logo.new(
   data: ''
 )
 
-result = terminal_settings_store_level_api.patch_stores_store_id_terminal_logos(
+result = terminal_settings_store_level_api.update_store_terminal_logo(
   store_id,
   model,
   body: body
@@ -723,7 +723,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Stores-Store Id-Terminal Settings
+# Get Store Terminal Settings
 
 Returns the payment terminal settings that are configured for the store identified in the path. These settings apply to all terminals under the store unless different values are configured for an individual terminal.
 
@@ -739,7 +739,7 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_stores_store_id_terminal_settings(store_id)
+def get_store_terminal_settings(store_id)
 ```
 
 ## Parameters
@@ -761,7 +761,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 store_id = 'storeId6'
 
-result = terminal_settings_store_level_api.get_stores_store_id_terminal_settings(store_id)
+result = terminal_settings_store_level_api.get_store_terminal_settings(store_id)
 
 if result.success?
   puts result.data
@@ -902,7 +902,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Stores-Store Id-Terminal Settings
+# Update Store Terminal Settings
 
 Updates payment terminal settings for the store identified in the path. These settings apply to all terminals under the store, unless different values are configured for an individual terminal.
 
@@ -921,8 +921,8 @@ For [sensitive terminal settings](https://docs.adyen.com/point-of-sale/automatin
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_stores_store_id_terminal_settings(store_id,
-                                            body: nil)
+def update_store_terminal_settings(store_id,
+                                   body: nil)
 ```
 
 ## Parameters
@@ -991,7 +991,7 @@ body = TerminalSettings.new(
   )
 )
 
-result = terminal_settings_store_level_api.patch_stores_store_id_terminal_settings(
+result = terminal_settings_store_level_api.update_store_terminal_settings(
   store_id,
   body: body
 )

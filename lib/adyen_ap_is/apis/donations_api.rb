@@ -14,8 +14,8 @@ module AdyenApIs
     # @param [DonationCampaignsRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_donation_campaigns(idempotency_key: nil,
-                                body: nil)
+    def get_donation_campaigns(idempotency_key: nil,
+                               body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/donationCampaigns',
@@ -58,8 +58,8 @@ module AdyenApIs
     # @param [DonationPaymentRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_donations(idempotency_key: nil,
-                       body: nil)
+    def create_donation(idempotency_key: nil,
+                        body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/donations',

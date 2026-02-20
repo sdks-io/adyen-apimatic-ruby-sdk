@@ -21,10 +21,10 @@ module AdyenApIs
     # @param [String] username Optional parameter: The partial or complete
     # username to select all users that match.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_users(company_id,
-                                       page_number: nil,
-                                       page_size: nil,
-                                       username: nil)
+    def list_company_users(company_id,
+                           page_number: nil,
+                           page_size: nil,
+                           username: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/users',
@@ -70,8 +70,8 @@ module AdyenApIs
     # @param [CreateCompanyUserRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_users(company_id,
-                                        body: nil)
+    def create_company_user(company_id,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/users',
@@ -118,8 +118,8 @@ module AdyenApIs
     # @param [String] user_id Required parameter: The unique identifier of the
     # user.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_users_user_id(company_id,
-                                               user_id)
+    def get_company_user(company_id,
+                         user_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/users/{userId}',
@@ -168,9 +168,9 @@ module AdyenApIs
     # @param [UpdateCompanyUserRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_users_user_id(company_id,
-                                                 user_id,
-                                                 body: nil)
+    def update_company_user(company_id,
+                            user_id,
+                            body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/users/{userId}',

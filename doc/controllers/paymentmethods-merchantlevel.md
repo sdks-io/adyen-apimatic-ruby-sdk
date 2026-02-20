@@ -10,15 +10,15 @@ paymentmethods_merchantlevel_api = client.paymentmethods_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Payment Method Settings](../../doc/controllers/paymentmethods-merchantlevel.md#get-merchants-merchant-id-payment-method-settings)
-* [Post-Merchants-Merchant Id-Payment Method Settings](../../doc/controllers/paymentmethods-merchantlevel.md#post-merchants-merchant-id-payment-method-settings)
-* [Get-Merchants-Merchant Id-Payment Method Settings-Payment Method Id](../../doc/controllers/paymentmethods-merchantlevel.md#get-merchants-merchant-id-payment-method-settings-payment-method-id)
-* [Patch-Merchants-Merchant Id-Payment Method Settings-Payment Method Id](../../doc/controllers/paymentmethods-merchantlevel.md#patch-merchants-merchant-id-payment-method-settings-payment-method-id)
-* [Post-Merchants-Merchant Id-Payment Method Settings-Payment Method Id-Add Apple Pay Domains](../../doc/controllers/paymentmethods-merchantlevel.md#post-merchants-merchant-id-payment-method-settings-payment-method-id-add-apple-pay-domains)
-* [Get-Merchants-Merchant Id-Payment Method Settings-Payment Method Id-Get Apple Pay Domains](../../doc/controllers/paymentmethods-merchantlevel.md#get-merchants-merchant-id-payment-method-settings-payment-method-id-get-apple-pay-domains)
+* [List Payment Method Settings](../../doc/controllers/paymentmethods-merchantlevel.md#list-payment-method-settings)
+* [Create Payment Method Setting](../../doc/controllers/paymentmethods-merchantlevel.md#create-payment-method-setting)
+* [Get Payment Method Setting](../../doc/controllers/paymentmethods-merchantlevel.md#get-payment-method-setting)
+* [Update Payment Method Setting](../../doc/controllers/paymentmethods-merchantlevel.md#update-payment-method-setting)
+* [Add Apple Pay Domains](../../doc/controllers/paymentmethods-merchantlevel.md#add-apple-pay-domains)
+* [Get Apple Pay Domains](../../doc/controllers/paymentmethods-merchantlevel.md#get-apple-pay-domains)
 
 
-# Get-Merchants-Merchant Id-Payment Method Settings
+# List Payment Method Settings
 
 Returns details for all payment methods of the merchant account identified in the path.
 
@@ -27,11 +27,11 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read
 
 ```ruby
-def get_merchants_merchant_id_payment_method_settings(merchant_id,
-                                                      store_id: nil,
-                                                      business_line_id: nil,
-                                                      page_size: nil,
-                                                      page_number: nil)
+def list_payment_method_settings(merchant_id,
+                                 store_id: nil,
+                                 business_line_id: nil,
+                                 page_size: nil,
+                                 page_number: nil)
 ```
 
 ## Parameters
@@ -57,7 +57,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = payment_methods_merchant_level_api.get_merchants_merchant_id_payment_method_settings(merchant_id)
+result = payment_methods_merchant_level_api.list_payment_method_settings(merchant_id)
 
 if result.success?
   puts result.data
@@ -78,7 +78,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Payment Method Settings
+# Create Payment Method Setting
 
 Sends a request to add a new payment method to the merchant account identified in the path.
 Depending the payment method [`type`](https://docs.adyen.com/api-explorer/Management/latest/post/merchants/_merchantId_/paymentMethodSettings#request-type), you may need to send an additional object required for the payment method.
@@ -88,8 +88,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read and write
 
 ```ruby
-def post_merchants_merchant_id_payment_method_settings(merchant_id,
-                                                       body: nil)
+def create_payment_method_setting(merchant_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -122,7 +122,7 @@ body = PaymentMethodSetupInfo.new(
   ]
 )
 
-result = payment_methods_merchant_level_api.post_merchants_merchant_id_payment_method_settings(
+result = payment_methods_merchant_level_api.create_payment_method_setting(
   merchant_id,
   body: body
 )
@@ -161,7 +161,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Payment Method Settings-Payment Method Id
+# Get Payment Method Setting
 
 Returns details for the merchant account and the payment method identified in the path.
 
@@ -170,8 +170,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read
 
 ```ruby
-def get_merchants_merchant_id_payment_method_settings_payment_method_id(merchant_id,
-                                                                        payment_method_id)
+def get_payment_method_setting(merchant_id,
+                               payment_method_id)
 ```
 
 ## Parameters
@@ -196,7 +196,7 @@ merchant_id = 'merchantId6'
 
 payment_method_id = 'paymentMethodId2'
 
-result = payment_methods_merchant_level_api.get_merchants_merchant_id_payment_method_settings_payment_method_id(
+result = payment_methods_merchant_level_api.get_payment_method_setting(
   merchant_id,
   payment_method_id
 )
@@ -220,7 +220,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Payment Method Settings-Payment Method Id
+# Update Payment Method Setting
 
 Updates payment method details for the merchant account and the payment method identified in the path.
 Depending the payment method [`type`](https://docs.adyen.com/api-explorer/Management/latest/patch/merchants/_merchantId_/paymentMethodSettings#request-type), you may need to send an additional object required for the payment method.
@@ -230,9 +230,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read and write
 
 ```ruby
-def patch_merchants_merchant_id_payment_method_settings_payment_method_id(merchant_id,
-                                                                          payment_method_id,
-                                                                          body: nil)
+def update_payment_method_setting(merchant_id,
+                                  payment_method_id,
+                                  body: nil)
 ```
 
 ## Parameters
@@ -267,7 +267,7 @@ body = UpdatePaymentMethodInfo.new(
   ]
 )
 
-result = payment_methods_merchant_level_api.patch_merchants_merchant_id_payment_method_settings_payment_method_id(
+result = payment_methods_merchant_level_api.update_payment_method_setting(
   merchant_id,
   payment_method_id,
   body: body
@@ -315,7 +315,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Payment Method Settings-Payment Method Id-Add Apple Pay Domains
+# Add Apple Pay Domains
 
 Adds the new domain to the list of Apple Pay domains that are registered with the merchant account and the payment method identified in the path. For more information, see [Apple Pay documentation](https://docs.adyen.com/payment-methods/apple-pay/web-drop-in/?tab=adyen-certificate-live_1#going-live).
 
@@ -324,9 +324,9 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read and write
 
 ```ruby
-def post_merchants_merchant_id_payment_method_settings_payment_method_id_add_apple_pay_domains(merchant_id,
-                                                                                               payment_method_id,
-                                                                                               body: nil)
+def add_apple_pay_domains(merchant_id,
+                          payment_method_id,
+                          body: nil)
 ```
 
 ## Parameters
@@ -358,7 +358,7 @@ body = ApplePayInfo.new(
   ]
 )
 
-result = payment_methods_merchant_level_api.post_merchants_merchant_id_payment_method_settings_payment_method_id_add_apple_pay_domains(
+result = payment_methods_merchant_level_api.add_apple_pay_domains(
   merchant_id,
   payment_method_id,
   body: body
@@ -383,7 +383,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Payment Method Settings-Payment Method Id-Get Apple Pay Domains
+# Get Apple Pay Domains
 
 Returns all Apple Pay domains that are registered with the merchant account and the payment method identified in the path. For more information, see [Apple Pay documentation](https://docs.adyen.com/payment-methods/apple-pay/enable-apple-pay#register-merchant-domain).
 
@@ -392,8 +392,8 @@ To make this request, your API credential must have the following [role](https:/
 * Management API—Payment methods read
 
 ```ruby
-def get_merchants_merchant_id_payment_method_settings_payment_method_id_get_apple_pay_domains(merchant_id,
-                                                                                              payment_method_id)
+def get_apple_pay_domains(merchant_id,
+                          payment_method_id)
 ```
 
 ## Parameters
@@ -418,7 +418,7 @@ merchant_id = 'merchantId6'
 
 payment_method_id = 'paymentMethodId2'
 
-result = payment_methods_merchant_level_api.get_merchants_merchant_id_payment_method_settings_payment_method_id_get_apple_pay_domains(
+result = payment_methods_merchant_level_api.get_apple_pay_domains(
   merchant_id,
   payment_method_id
 )

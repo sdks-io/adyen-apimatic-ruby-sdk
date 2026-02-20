@@ -22,8 +22,8 @@ module AdyenApIs
     # the company account.
     # @param [String] name Optional parameter: The name of the billing entity.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_billing_entities(company_id,
-                                                  name: nil)
+    def list_company_billing_entities(company_id,
+                                      name: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/billingEntities',
@@ -78,10 +78,10 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of locations to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_shipping_locations(company_id,
-                                                    name: nil,
-                                                    offset: nil,
-                                                    limit: nil)
+    def list_company_shipping_locations(company_id,
+                                        name: nil,
+                                        offset: nil,
+                                        limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/shippingLocations',
@@ -131,8 +131,8 @@ module AdyenApIs
     # @param [ShippingLocation] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_shipping_locations(company_id,
-                                                     body: nil)
+    def create_company_shipping_location(company_id,
+                                         body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/shippingLocations',
@@ -184,7 +184,7 @@ module AdyenApIs
     # @param [String] company_id Required parameter: The unique identifier of
     # the company account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_models(company_id)
+    def list_company_terminal_models(company_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalModels',
@@ -240,11 +240,11 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of orders to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_orders(company_id,
-                                                 customer_order_reference: nil,
-                                                 status: nil,
-                                                 offset: nil,
-                                                 limit: nil)
+    def list_company_terminal_orders(company_id,
+                                     customer_order_reference: nil,
+                                     status: nil,
+                                     offset: nil,
+                                     limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalOrders',
@@ -299,8 +299,8 @@ module AdyenApIs
     # @param [TerminalOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_terminal_orders(company_id,
-                                                  body: nil)
+    def create_company_terminal_order(company_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/terminalOrders',
@@ -350,8 +350,8 @@ module AdyenApIs
     # @param [String] order_id Required parameter: The unique identifier of the
     # order.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_orders_order_id(company_id,
-                                                          order_id)
+    def get_company_terminal_order(company_id,
+                                   order_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalOrders/{orderId}',
@@ -408,9 +408,9 @@ module AdyenApIs
     # @param [TerminalOrderRequest] body Optional parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_terminal_orders_order_id(company_id,
-                                                            order_id,
-                                                            body: nil)
+    def update_company_terminal_order(company_id,
+                                      order_id,
+                                      body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/terminalOrders/{orderId}',
@@ -466,8 +466,8 @@ module AdyenApIs
     # @param [String] order_id Required parameter: The unique identifier of the
     # order.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def post_companies_company_id_terminal_orders_order_id_cancel(company_id,
-                                                                  order_id)
+    def cancel_company_terminal_order(company_id,
+                                      order_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/companies/{companyId}/terminalOrders/{orderId}/cancel',
@@ -530,11 +530,11 @@ module AdyenApIs
     # @param [Integer] limit Optional parameter: The number of products to
     # return.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_products(company_id,
-                                                   country,
-                                                   terminal_model_id: nil,
-                                                   offset: nil,
-                                                   limit: nil)
+    def list_company_terminal_products(company_id,
+                                       country,
+                                       terminal_model_id: nil,
+                                       offset: nil,
+                                       limit: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalProducts',

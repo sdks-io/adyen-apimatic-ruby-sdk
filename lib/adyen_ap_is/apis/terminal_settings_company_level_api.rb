@@ -28,8 +28,8 @@ module AdyenApIs
     # P400Plus, UX300, UX410, V200cPlus, V240mPlus, V400cPlus, V400m, e280,
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_logos(company_id,
-                                                model)
+    def get_company_terminal_logo(company_id,
+                                  model)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalLogos',
@@ -88,9 +88,9 @@ module AdyenApIs
     # e285, e285p, S1E, S1EL, S1F2, S1L, S1U, S7T.
     # @param [Logo] body Optional parameter: TODO: type description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_terminal_logos(company_id,
-                                                  model,
-                                                  body: nil)
+    def update_company_terminal_logo(company_id,
+                                     model,
+                                     body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/terminalLogos',
@@ -148,7 +148,7 @@ module AdyenApIs
     # @param [String] company_id Required parameter: The unique identifier of
     # the company account.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_settings(company_id)
+    def get_company_terminal_settings(company_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalSettings',
@@ -208,8 +208,8 @@ module AdyenApIs
     # @param [TerminalSettings] body Optional parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def patch_companies_company_id_terminal_settings(company_id,
-                                                     body: nil)
+    def update_company_terminal_settings(company_id,
+                                         body: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/companies/{companyId}/terminalSettings',

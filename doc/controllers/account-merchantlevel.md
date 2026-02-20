@@ -10,13 +10,13 @@ account_merchantlevel_api = client.account_merchantlevel
 
 ## Methods
 
-* [Get-Merchants](../../doc/controllers/account-merchantlevel.md#get-merchants)
-* [Post-Merchants](../../doc/controllers/account-merchantlevel.md#post-merchants)
-* [Get-Merchants-Merchant Id](../../doc/controllers/account-merchantlevel.md#get-merchants-merchant-id)
-* [Post-Merchants-Merchant Id-Activate](../../doc/controllers/account-merchantlevel.md#post-merchants-merchant-id-activate)
+* [List Merchants](../../doc/controllers/account-merchantlevel.md#list-merchants)
+* [Create Merchant](../../doc/controllers/account-merchantlevel.md#create-merchant)
+* [Get Merchant](../../doc/controllers/account-merchantlevel.md#get-merchant)
+* [Activate Merchant](../../doc/controllers/account-merchantlevel.md#activate-merchant)
 
 
-# Get-Merchants
+# List Merchants
 
 Returns the list of merchant accounts that your API credential has access to. The list is grouped into pages as defined by the query parameters.
 
@@ -25,8 +25,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Account read
 
 ```ruby
-def get_merchants(page_number: nil,
-                  page_size: nil)
+def list_merchants(page_number: nil,
+                   page_size: nil)
 ```
 
 ## Parameters
@@ -47,7 +47,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ## Example Usage
 
 ```ruby
-result = account_merchant_level_api.get_merchants
+result = account_merchant_level_api.list_merchants
 
 if result.success?
   puts result.data
@@ -327,7 +327,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants
+# Create Merchant
 
 Creates a merchant account for the company account specified in the request.
 
@@ -338,7 +338,7 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Accounts read and write
 
 ```ruby
-def post_merchants(body: nil)
+def create_merchant(body: nil)
 ```
 
 ## Parameters
@@ -366,7 +366,7 @@ body = CreateMerchantRequest.new(
   reference: 'YOUR_OWN_REFERENCE'
 )
 
-result = account_merchant_level_api.post_merchants(body: body)
+result = account_merchant_level_api.create_merchant(body: body)
 
 if result.success?
   puts result.data
@@ -399,7 +399,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id
+# Get Merchant
 
 Returns the merchant account specified in the path. Your API credential must have access to the merchant account.
 
@@ -408,7 +408,7 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Account read
 
 ```ruby
-def get_merchants_merchant_id(merchant_id)
+def get_merchant(merchant_id)
 ```
 
 ## Parameters
@@ -430,7 +430,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = account_merchant_level_api.get_merchants_merchant_id(merchant_id)
+result = account_merchant_level_api.get_merchant(merchant_id)
 
 if result.success?
   puts result.data
@@ -479,7 +479,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Activate
+# Activate Merchant
 
 Sends a request to activate the merchant account identified in the path.
 
@@ -492,7 +492,7 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—Accounts read and write
 
 ```ruby
-def post_merchants_merchant_id_activate(merchant_id)
+def activate_merchant(merchant_id)
 ```
 
 ## Parameters
@@ -514,7 +514,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = account_merchant_level_api.post_merchants_merchant_id_activate(merchant_id)
+result = account_merchant_level_api.activate_merchant(merchant_id)
 
 if result.success?
   puts result.data

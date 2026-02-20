@@ -9,7 +9,7 @@ clientkey_companylevel_api = client.clientkey_companylevel
 `ClientkeyCompanylevelApi`
 
 
-# Post-Companies-Company Id-Api Credentials-Api Credential Id-Generate Client Key
+# Generate Company Client Key
 
 Returns a new [client key](https://docs.adyen.com/development-resources/client-side-authentication#how-it-works) for the API credential identified in the path. You can use the new client key a few minutes after generating it. The old client key stops working 24 hours after generating a new one.
 
@@ -18,8 +18,8 @@ To make this request, your API credential must have the following [roles](https:
 * Management API—API credentials read and write
 
 ```ruby
-def post_companies_company_id_api_credentials_api_credential_id_generate_client_key(company_id,
-                                                                                    api_credential_id)
+def generate_company_client_key(company_id,
+                                api_credential_id)
 ```
 
 ## Parameters
@@ -44,7 +44,7 @@ company_id = 'companyId0'
 
 api_credential_id = 'apiCredentialId8'
 
-result = client_key_company_level_api.post_companies_company_id_api_credentials_api_credential_id_generate_client_key(
+result = client_key_company_level_api.generate_company_client_key(
   company_id,
   api_credential_id
 )

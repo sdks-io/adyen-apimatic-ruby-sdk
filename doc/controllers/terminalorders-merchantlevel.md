@@ -10,19 +10,19 @@ terminalorders_merchantlevel_api = client.terminalorders_merchantlevel
 
 ## Methods
 
-* [Get-Merchants-Merchant Id-Billing Entities](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-billing-entities)
-* [Get-Merchants-Merchant Id-Shipping Locations](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-shipping-locations)
-* [Post-Merchants-Merchant Id-Shipping Locations](../../doc/controllers/terminalorders-merchantlevel.md#post-merchants-merchant-id-shipping-locations)
-* [Get-Merchants-Merchant Id-Terminal Models](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-terminal-models)
-* [Get-Merchants-Merchant Id-Terminal Orders](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-terminal-orders)
-* [Post-Merchants-Merchant Id-Terminal Orders](../../doc/controllers/terminalorders-merchantlevel.md#post-merchants-merchant-id-terminal-orders)
-* [Get-Merchants-Merchant Id-Terminal Orders-Order Id](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-terminal-orders-order-id)
-* [Patch-Merchants-Merchant Id-Terminal Orders-Order Id](../../doc/controllers/terminalorders-merchantlevel.md#patch-merchants-merchant-id-terminal-orders-order-id)
-* [Post-Merchants-Merchant Id-Terminal Orders-Order Id-Cancel](../../doc/controllers/terminalorders-merchantlevel.md#post-merchants-merchant-id-terminal-orders-order-id-cancel)
-* [Get-Merchants-Merchant Id-Terminal Products](../../doc/controllers/terminalorders-merchantlevel.md#get-merchants-merchant-id-terminal-products)
+* [List Merchant Billing Entities](../../doc/controllers/terminalorders-merchantlevel.md#list-merchant-billing-entities)
+* [List Merchant Shipping Locations](../../doc/controllers/terminalorders-merchantlevel.md#list-merchant-shipping-locations)
+* [Create Merchant Shipping Location](../../doc/controllers/terminalorders-merchantlevel.md#create-merchant-shipping-location)
+* [List Merchant Terminal Models](../../doc/controllers/terminalorders-merchantlevel.md#list-merchant-terminal-models)
+* [List Merchant Terminal Orders](../../doc/controllers/terminalorders-merchantlevel.md#list-merchant-terminal-orders)
+* [Create Merchant Terminal Order](../../doc/controllers/terminalorders-merchantlevel.md#create-merchant-terminal-order)
+* [Get Merchant Terminal Order](../../doc/controllers/terminalorders-merchantlevel.md#get-merchant-terminal-order)
+* [Update Merchant Terminal Order](../../doc/controllers/terminalorders-merchantlevel.md#update-merchant-terminal-order)
+* [Cancel Merchant Terminal Order](../../doc/controllers/terminalorders-merchantlevel.md#cancel-merchant-terminal-order)
+* [List Merchant Terminal Products](../../doc/controllers/terminalorders-merchantlevel.md#list-merchant-terminal-products)
 
 
-# Get-Merchants-Merchant Id-Billing Entities
+# List Merchant Billing Entities
 
 Returns the billing entities of the merchant account identified in the path.
 A billing entity is a legal entity where we charge orders to. An order for terminal products must contain the ID of a billing entity.
@@ -35,8 +35,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_billing_entities(merchant_id,
-                                               name: nil)
+def list_merchant_billing_entities(merchant_id,
+                                   name: nil)
 ```
 
 ## Parameters
@@ -59,7 +59,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_billing_entities(merchant_id)
+result = terminal_orders_merchant_level_api.list_merchant_billing_entities(merchant_id)
 
 if result.success?
   puts result.data
@@ -100,7 +100,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Shipping Locations
+# List Merchant Shipping Locations
 
 Returns the shipping locations for the merchant account identified in the path.
 A shipping location includes the address where orders can be delivered, and an ID which you need to specify when ordering terminal products.
@@ -113,10 +113,10 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_shipping_locations(merchant_id,
-                                                 name: nil,
-                                                 offset: nil,
-                                                 limit: nil)
+def list_merchant_shipping_locations(merchant_id,
+                                     name: nil,
+                                     offset: nil,
+                                     limit: nil)
 ```
 
 ## Parameters
@@ -141,7 +141,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_shipping_locations(merchant_id)
+result = terminal_orders_merchant_level_api.list_merchant_shipping_locations(merchant_id)
 
 if result.success?
   puts result.data
@@ -187,7 +187,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Shipping Locations
+# Create Merchant Shipping Location
 
 Creates a shipping location for the merchant account identified in the path. A shipping location defines an address where orders can be shipped to.
 
@@ -198,8 +198,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_merchants_merchant_id_shipping_locations(merchant_id,
-                                                  body: nil)
+def create_merchant_shipping_location(merchant_id,
+                                      body: nil)
 ```
 
 ## Parameters
@@ -240,7 +240,7 @@ body = ShippingLocation.new(
   name: 'YOUR_MERCHANT_ACCOUNT Barcelona depot'
 )
 
-result = terminal_orders_merchant_level_api.post_merchants_merchant_id_shipping_locations(
+result = terminal_orders_merchant_level_api.create_merchant_shipping_location(
   merchant_id,
   body: body
 )
@@ -285,7 +285,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Terminal Models
+# List Merchant Terminal Models
 
 Returns the payment terminal models that the merchant account identified in the path has access to. The response includes the terminal model ID, which can be used as a query parameter when getting a list of terminals or a list of products for ordering.
 
@@ -297,7 +297,7 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_models(merchant_id)
+def list_merchant_terminal_models(merchant_id)
 ```
 
 ## Parameters
@@ -319,7 +319,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_terminal_models(merchant_id)
+result = terminal_orders_merchant_level_api.list_merchant_terminal_models(merchant_id)
 
 if result.success?
   puts result.data
@@ -500,7 +500,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Terminal Orders
+# List Merchant Terminal Orders
 
 Returns a list of terminal products orders for the merchant account identified in the path.
 
@@ -512,11 +512,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_orders(merchant_id,
-                                              customer_order_reference: nil,
-                                              status: nil,
-                                              offset: nil,
-                                              limit: nil)
+def list_merchant_terminal_orders(merchant_id,
+                                  customer_order_reference: nil,
+                                  status: nil,
+                                  offset: nil,
+                                  limit: nil)
 ```
 
 ## Parameters
@@ -542,7 +542,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 merchant_id = 'merchantId6'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_terminal_orders(merchant_id)
+result = terminal_orders_merchant_level_api.list_merchant_terminal_orders(merchant_id)
 
 if result.success?
   puts result.data
@@ -660,7 +660,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Terminal Orders
+# Create Merchant Terminal Order
 
 Creates an order for payment terminal products for the merchant account identified in the path.
 
@@ -673,8 +673,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_merchants_merchant_id_terminal_orders(merchant_id,
-                                               body: nil)
+def create_merchant_terminal_order(merchant_id,
+                                   body: nil)
 ```
 
 ## Parameters
@@ -715,7 +715,7 @@ body = TerminalOrderRequest.new(
   shipping_location_id: 'S2-6A6C2E3432747D4F2F2C3455485E3836457D'
 )
 
-result = terminal_orders_merchant_level_api.post_merchants_merchant_id_terminal_orders(
+result = terminal_orders_merchant_level_api.create_merchant_terminal_order(
   merchant_id,
   body: body
 )
@@ -790,7 +790,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Terminal Orders-Order Id
+# Get Merchant Terminal Order
 
 Returns the details of the terminal products order identified in the path.
 
@@ -802,8 +802,8 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_orders_order_id(merchant_id,
-                                                       order_id)
+def get_merchant_terminal_order(merchant_id,
+                                order_id)
 ```
 
 ## Parameters
@@ -828,7 +828,7 @@ merchant_id = 'merchantId6'
 
 order_id = 'orderId2'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_terminal_orders_order_id(
+result = terminal_orders_merchant_level_api.get_merchant_terminal_order(
   merchant_id,
   order_id
 )
@@ -903,7 +903,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Patch-Merchants-Merchant Id-Terminal Orders-Order Id
+# Update Merchant Terminal Order
 
 Updates the terminal products order identified in the path.
 Updating is only possible while the order has the status **Placed**.
@@ -919,9 +919,9 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def patch_merchants_merchant_id_terminal_orders_order_id(merchant_id,
-                                                         order_id,
-                                                         body: nil)
+def update_merchant_terminal_order(merchant_id,
+                                   order_id,
+                                   body: nil)
 ```
 
 ## Parameters
@@ -967,7 +967,7 @@ body = TerminalOrderRequest.new(
   ]
 )
 
-result = terminal_orders_merchant_level_api.patch_merchants_merchant_id_terminal_orders_order_id(
+result = terminal_orders_merchant_level_api.update_merchant_terminal_order(
   merchant_id,
   order_id,
   body: body
@@ -1049,7 +1049,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Post-Merchants-Merchant Id-Terminal Orders-Order Id-Cancel
+# Cancel Merchant Terminal Order
 
 Cancels the terminal products order identified in the path.
 Cancelling is only possible while the order has the status **Placed**.
@@ -1062,8 +1062,8 @@ To make this request, your API credential must have the following [role](https:/
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def post_merchants_merchant_id_terminal_orders_order_id_cancel(merchant_id,
-                                                               order_id)
+def cancel_merchant_terminal_order(merchant_id,
+                                   order_id)
 ```
 
 ## Parameters
@@ -1088,7 +1088,7 @@ merchant_id = 'merchantId6'
 
 order_id = 'orderId2'
 
-result = terminal_orders_merchant_level_api.post_merchants_merchant_id_terminal_orders_order_id_cancel(
+result = terminal_orders_merchant_level_api.cancel_merchant_terminal_order(
   merchant_id,
   order_id
 )
@@ -1163,7 +1163,7 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`RestServiceErrorException`](../../doc/models/rest-service-error-exception.md) |
 
 
-# Get-Merchants-Merchant Id-Terminal Products
+# List Merchant Terminal Products
 
 Returns a country-specific list of payment terminal packages and parts that the merchant account identified in the path has access to.
 
@@ -1175,11 +1175,11 @@ To make this request, your API credential must have one of the following [roles]
 In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
 
 ```ruby
-def get_merchants_merchant_id_terminal_products(merchant_id,
-                                                country,
-                                                terminal_model_id: nil,
-                                                offset: nil,
-                                                limit: nil)
+def list_merchant_terminal_products(merchant_id,
+                                    country,
+                                    terminal_model_id: nil,
+                                    offset: nil,
+                                    limit: nil)
 ```
 
 ## Parameters
@@ -1207,7 +1207,7 @@ merchant_id = 'merchantId6'
 
 country = 'country4'
 
-result = terminal_orders_merchant_level_api.get_merchants_merchant_id_terminal_products(
+result = terminal_orders_merchant_level_api.list_merchant_terminal_products(
   merchant_id,
   country
 )

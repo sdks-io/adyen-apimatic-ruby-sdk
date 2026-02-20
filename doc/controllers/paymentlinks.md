@@ -10,20 +10,20 @@ paymentlinks_api = client.paymentlinks
 
 ## Methods
 
-* [Post-Payment Links](../../doc/controllers/paymentlinks.md#post-payment-links)
-* [Get-Payment Links-Link Id](../../doc/controllers/paymentlinks.md#get-payment-links-link-id)
-* [Patch-Payment Links-Link Id](../../doc/controllers/paymentlinks.md#patch-payment-links-link-id)
+* [Create Payment Link](../../doc/controllers/paymentlinks.md#create-payment-link)
+* [Get Payment Link](../../doc/controllers/paymentlinks.md#get-payment-link)
+* [Update Payment Link](../../doc/controllers/paymentlinks.md#update-payment-link)
 
 
-# Post-Payment Links
+# Create Payment Link
 
 Creates a payment link to a [Pay by Link](https://docs.adyen.com/unified-commerce/pay-by-link/) page where the shopper can pay. The list of payment methods presented to the shopper depends on the `currency` and `country` parameters sent in the request.
 
 For more information, refer to [Pay by Link documentation](https://docs.adyen.com/online-payments/pay-by-link#create-payment-links-through-api).
 
 ```ruby
-def post_payment_links(idempotency_key: nil,
-                       body: nil)
+def create_payment_link(idempotency_key: nil,
+                        body: nil)
 ```
 
 ## Parameters
@@ -69,7 +69,7 @@ body = PaymentLinkRequest.new(
   shopper_reference: 'YOUR_SHOPPER_REFERENCE'
 )
 
-result = payment_links_api.post_payment_links(body: body)
+result = payment_links_api.create_payment_link(body: body)
 
 if result.success?
   puts result.data
@@ -127,12 +127,12 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`ServiceErrorException`](../../doc/models/service-error-exception.md) |
 
 
-# Get-Payment Links-Link Id
+# Get Payment Link
 
 Retrieves the payment link details using the payment link `id`.
 
 ```ruby
-def get_payment_links_link_id(link_id)
+def get_payment_link(link_id)
 ```
 
 ## Parameters
@@ -150,7 +150,7 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```ruby
 link_id = 'linkId6'
 
-result = payment_links_api.get_payment_links_link_id(link_id)
+result = payment_links_api.get_payment_link(link_id)
 
 if result.success?
   puts result.data
@@ -190,13 +190,13 @@ end
 | 500 | Internal Server Error - the server could not process the request. | [`ServiceErrorException`](../../doc/models/service-error-exception.md) |
 
 
-# Patch-Payment Links-Link Id
+# Update Payment Link
 
 Updates the status of a payment link. Use this endpoint to [force the expiry of a payment link](https://docs.adyen.com/online-payments/pay-by-link#update-payment-link-status).
 
 ```ruby
-def patch_payment_links_link_id(link_id,
-                                body: nil)
+def update_payment_link(link_id,
+                        body: nil)
 ```
 
 ## Parameters
@@ -219,7 +219,7 @@ body = UpdatePaymentLinkRequest.new(
   status: 'expired'
 )
 
-result = payment_links_api.patch_payment_links_link_id(
+result = payment_links_api.update_payment_link(
   link_id,
   body: body
 )

@@ -33,11 +33,11 @@ module AdyenApIs
     # **UninstallAndroidApp**, **InstallAndroidCertificate**,
     # **UninstallAndroidCertificate**.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_actions(company_id,
-                                                  page_number: nil,
-                                                  page_size: nil,
-                                                  status: nil,
-                                                  type: nil)
+    def list_company_terminal_actions(company_id,
+                                      page_number: nil,
+                                      page_size: nil,
+                                      status: nil,
+                                      type: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalActions',
@@ -90,8 +90,8 @@ module AdyenApIs
     # @param [String] action_id Required parameter: The unique identifier of the
     # terminal action.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_companies_company_id_terminal_actions_action_id(company_id,
-                                                            action_id)
+    def get_company_terminal_action(company_id,
+                                    action_id)
       @api_call
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/companies/{companyId}/terminalActions/{actionId}',
